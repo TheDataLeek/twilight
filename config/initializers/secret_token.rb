@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Twilight::Application.config.secret_key_base = '5add865fa6a32564c5b4aaa488e1cdaa46f1cfe7f2746d46ebc4815e4801336924ed1b9f94d0ae0ce7db419ce8c1d1049c070b15f701996e7d8ade499ac31485'
+Twilight::Application.config.secret_key_base = '4ae06fdc832c3a136e6189c7064b900e76b5b700ccda13d6e886017dd7763b02f11ff6b01ac5c74544c49bc90f688ff2899b875a57ebb6333c491de5ebe61cf0'
