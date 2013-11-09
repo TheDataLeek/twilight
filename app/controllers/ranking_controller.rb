@@ -1,28 +1,18 @@
 class RankingController < ApplicationController
+  attr_accessor :pages
+
+  add_page("Index", "/")
   def index
-    page1      = Page.new
-    page1.name = "test1"
-    page1.url  = "google.com"
-    page2      = Page.new
-    page2.name = "test2"
-    page2.url  = "reddit.com"
-    @pages     = [page1, page2]
+  end
+
+  def add_page(pname, purl)
+    new_page      = Page.new
+    new_page.name = pname
+    new_page.url  = purl
+    @pages << new_page
   end
 
   class Page
-    @name = nil
-    @url = nil
-    def name=(value)
-      @name = value
-    end
-    def name
-      @name
-    end
-    def url=(value)
-      @url= value
-    end
-    def url
-      @url
-    end
+    attr_accessor :url,:name
   end
 end
