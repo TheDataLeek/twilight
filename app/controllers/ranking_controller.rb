@@ -1,5 +1,9 @@
 class RankingController < ApplicationController
-  def index
+    def index
       @nav = render_navigation(:level => :all)
-  end
+    end
+
+    def login
+        p "Not Implemented"
+    end
 end

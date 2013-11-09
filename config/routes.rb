@@ -1,5 +1,6 @@
 Twilight::Application.routes.draw do
   get "ranking/index"
+  get "ranking/login"
 
   root 'ranking#index'
   # The priority is based upon order of creation: first created -> highest priority.
