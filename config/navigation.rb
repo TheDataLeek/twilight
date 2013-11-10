@@ -72,5 +72,6 @@ SimpleNavigation::Configuration.run do |navigation|
     # primary.auto_highlight = false
 
     primary.item :home, 'Home', '/'
+    primary.item :login, 'Login', '/ranking/login'
   end
 end
