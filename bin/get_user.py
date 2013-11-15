@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import sys
-import requests, requests_oathlib
+import requests, requests_oauthlib
 
 auth = requests_oauthlib.OAuth1("rAco7WbMOYuvsiln7SLbHw",
                                 "Hlj3CVuLxRMiFzOo9RqhNYBxdB1F6ka5G3J52IDdw",
