@@ -1,15 +1,22 @@
 #!/usr/bin/env python
 
+import sys
 import logging
 import time
+import smtplib
 import watchdog
-import sys
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from watchdog.events import FileSystemEventHandler
 
 from get_user import *
 from rank_user import *
+
+fromaddr    = 'TwilightRanker@gmail.com'
+toaddrs     = ['willzfarmer@gmail.com', 'da007penguin@gmail.com']
+credentials = open('../config/gmail_credentials.txt')
+username    = credentials.readline()[:-1]
+password    = credentials.readline()[:-1]
 
 def main():
     open('../log/pyRank.log', 'w').close()  # Testing only. Delete for prod
@@ -41,7 +48,15 @@ def start_watchdog():
         logging.info("Unexpected error: %s" % sys.exc_info()[0])
         observer.stop()
         log_observer.stop()
-        raise
+
+        # Send Email
+        msg = "Unexpected error: %s\nScript Failed. Please log in and restart manually" % sys.exc_info()[0]
+        for receiver in toaddrs:
+            server = smtplib.SMTP('smtp.gmail.com:587')
+            server.starttls()
+            server.login(username,password)
+            server.sendmail(fromaddr, receiver, msg)
+            server.quit()
     observer.join()
     log_observer.join()
 
