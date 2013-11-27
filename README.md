@@ -15,6 +15,7 @@ The user model needs some specific pieces.
 * User
   * id:int:primary key   -- Unique Twitter ID
   * screen_name:string   -- Unique Twitter Name
+  * name:string          -- Non-Unique Name
   * created:time         -- Profile Creation Date
   * rank:int             -- Social Network Rank
   * score:int            -- Total Score
@@ -22,6 +23,7 @@ The user model needs some specific pieces.
   * follower_count:int   -- Follower Count
   * friend_count:int     -- Friend Count
   * retweet_count:int    -- Retweet Count
+  * statuses_count:int   -- Statuses Count
 * Followers
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References
