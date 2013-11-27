@@ -8,10 +8,8 @@ in /bin.
 
 The languages used are Ruby on Rails and Python.
 
-User Model
-----------
-The user model needs some specific pieces.
-
+Models
+------
 * User
   * id:int:primary key   -- Unique Twitter ID
   * screen_name:string   -- Unique Twitter Name
