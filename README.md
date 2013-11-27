@@ -7,3 +7,30 @@ fledged Ruby on Rails website, or just as a exectuable Python program located
 in /bin.
 
 The languages used are Ruby on Rails and Python.
+
+User Model
+----------
+The user model needs some specific pieces.
+
+    * User
+      * id:int:primary key   -- Unique Twitter ID
+      * screen_name:string   -- Unique Twitter Name
+      * created:time         -- Profile Creation Date
+      * rank:int             -- Social Network Rank
+      * score:int            -- Total Score
+      * favourite_count:int  -- Favourite Count
+      * follower_count:int   -- Follower Count
+      * friend_count:int     -- Friend Count
+      * retweet_count:int    -- Retweet Count
+    * Followers
+      * id:int:primary key   -- User ID
+      * user:int:foreign key -- User it References
+    * Friends
+      * id:int:primary key   -- User ID
+      * user:int:foreign key -- User it References
+    * Retweets
+      * id:int:primary key   -- User ID
+      * user:int:foreign key -- User it References
+    * Network
+      * id:int:primary key   -- User ID
+      * user:int:foreign key -- User it References
