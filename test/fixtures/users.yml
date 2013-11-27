@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 
+  screen_name: MyText
+  name: MyText
+  created: MyText
+  rank: 
+  score: 
+  favourite_count: 
+  follower_count: 
+  friend_count: 
+  retweet_count: 
+  statuses_count: 
+
+two:
+  id: 
+  screen_name: MyText
+  name: MyText
+  created: MyText
+  rank: 
+  score: 
+  favourite_count: 
+  follower_count: 
+  friend_count: 
+  retweet_count: 
+  statuses_count: 
