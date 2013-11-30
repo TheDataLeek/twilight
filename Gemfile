@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # Navigation bar
 gem "simple-navigation"
 
+# Cucumber
+gem "cucumber"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
