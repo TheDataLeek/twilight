@@ -30,10 +30,12 @@ gem 'jbuilder', '~> 1.2'
 # Navigation bar
 gem "simple-navigation"
 
-# Cucumber
-gem "cucumber-rails"
-gem "capybara"
-gem "rspec-rails"
+group :test do
+    gem "cucumber-rails", :require=>false
+    gem "capybara"
+    gem "rspec-rails"
+    gem "database_cleaner", '1.0.0.RC1'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

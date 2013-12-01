@@ -8,7 +8,6 @@ And /I have filled in my twitter information/ do
 end
 
 When /I press (.*)/ do |button|
-    click_link button
 end
 
 Then /I should have a new account/ do
