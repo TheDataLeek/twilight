@@ -31,7 +31,9 @@ gem 'jbuilder', '~> 1.2'
 gem "simple-navigation"
 
 # Cucumber
-gem "cucumber"
+gem "cucumber-rails"
+gem "capybara"
+gem "rspec-rails"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

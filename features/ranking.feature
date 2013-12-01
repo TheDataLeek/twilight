@@ -16,7 +16,7 @@ Background: users, their twitter information and a ranked database of a users lo
     Given I am on my user profile
 
 Scenario: Display ranking
-    When I click on my ranking page
+    When I click on the ranking button
     Then I should see a list of my followers ranked by influence
 
 Scenario: Sort ranking

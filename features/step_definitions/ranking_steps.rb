@@ -2,6 +2,7 @@ Given /I am on my user profile/ do
 end
 
 When /I click on the ranking button/ do
+    click_link("Rankings")
 end
 
 Then /I should see a list of my followers ranked by (.*)/ do |order|
