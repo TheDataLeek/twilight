@@ -12,7 +12,7 @@ Models
 ------
 * User
   * id:int:primary key   -- Unique Twitter ID
-  * screen_name:string   -- Unique Twitter Name
+  * username:string      -- Unique Twitter Name
   * name:string          -- Non-Unique Name
   * created:time         -- Profile Creation Date
   * rank:int             -- Social Network Rank
@@ -23,7 +23,9 @@ Models
   * retweet_count:int    -- Retweet Count
   * statuses_count:int   -- Statuses Count
   * email:string         -- Email String
-  * hash:string          -- Hash String
+  * password:string      -- Password
+  * password_hash:string -- PassHash
+  * password_salt:string -- PassSalt
 * Followers
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202050633) do
+ActiveRecord::Schema.define(version: 20131202181702) do
 
   create_table "followers", force: true do |t|
     t.integer  "user"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131202050633) do
   end
 
   create_table "users", force: true do |t|
-    t.text     "screen_name"
+    t.text     "username"
     t.text     "name"
     t.text     "created"
     t.integer  "rank"
