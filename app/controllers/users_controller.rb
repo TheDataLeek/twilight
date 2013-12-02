@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        p @user
         @user.save
         sign_in @user
         redirect_to @user
@@ -18,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = self.current_user
     end
 
     def update

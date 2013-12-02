@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 
     def about
         @about  = "/static_pages/about"
-        @login  = "/static_pages/login"
+        @login  = "/sessions/new"
         @logout = "/static_pages/logout"
     end
 end
