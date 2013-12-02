@@ -22,6 +22,8 @@ Models
   * friend_count:int     -- Friend Count
   * retweet_count:int    -- Retweet Count
   * statuses_count:int   -- Statuses Count
+  * email:string         -- Email String
+  * hash:string          -- Hash String
 * Followers
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References
