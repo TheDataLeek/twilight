@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # Navigation bar
 #gem "simple-navigation"
 
+# Password Encryption
+gem 'bcrypt-ruby', :require=>'bcrypt'
+
 group :test do
     gem "cucumber-rails", :require=>false
     gem "capybara"
