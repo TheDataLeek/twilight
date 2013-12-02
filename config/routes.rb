@@ -3,7 +3,7 @@ Twilight::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',   to: 'users#new',        via: 'get'
   match '/login',    to: 'sessions#new',     via: 'get'
-  match '/logout',   to: 'sessions#destroy', via: 'delete'
+  match '/logout',   to: 'sessions#destroy', via: 'get'
   get "static_pages/login"
   get "static_pages/logout"
   get "static_pages/about"
