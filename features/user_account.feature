@@ -6,10 +6,10 @@ Feature: User account
 
 Background: The user does not have an account on the site and he has a twitter account
     Given I am a new user to the site
-    And I am on the Create Account page
+    And I am on the /signup page
     And I have filled in my twitter information
 
 Scenario: Create account
-    When I press Create Account
+    When I press Create my account
     Then I should have a new account
     And I should be on my user profile

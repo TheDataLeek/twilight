@@ -1,4 +1,16 @@
 Given /I am on my user profile/ do
+    user = User.new(:username => "tester",
+                    :email => 'tester@test.com',
+                    :password => 'testtesttest')
+    user.save
+
+    visit('/login')
+    fill_in('Email', :with=>'tester@test.com')
+    fill_in('Password', :with=>'testtesttest')
+    click_button('Sign In')
+
+    uri = URI.parse(current_url)
+    "#{uri.path}?#{uri.query}".should == '/users/1?'
 end
 
 When /I click on the ranking button/ do
@@ -6,6 +18,7 @@ When /I click on the ranking button/ do
 end
 
 Then /I should see a list of my followers ranked by (.*)/ do |order|
+    pending
 end
 
 When /I click on my ranking/ do
