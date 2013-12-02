@@ -28,7 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Navigation bar
-gem "simple-navigation"
+#gem "simple-navigation"
 
 group :test do
     gem "cucumber-rails", :require=>false
