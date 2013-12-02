@@ -11,21 +11,22 @@ The languages used are Ruby on Rails and Python.
 Models
 ------
 * User
-  * id:int:primary key   -- Unique Twitter ID
-  * username:string      -- Unique Twitter Name
-  * name:string          -- Non-Unique Name
-  * created:time         -- Profile Creation Date
-  * rank:int             -- Social Network Rank
-  * score:int            -- Total Score
-  * favourite_count:int  -- Favourite Count
-  * follower_count:int   -- Follower Count
-  * friend_count:int     -- Friend Count
-  * retweet_count:int    -- Retweet Count
-  * statuses_count:int   -- Statuses Count
-  * email:string         -- Email String
-  * password:string      -- Password
-  * password_hash:string -- PassHash
-  * password_salt:string -- PassSalt
+  * id:int:primary key    -- Unique Twitter ID
+  * username:string       -- Unique Twitter Name
+  * name:string           -- Non-Unique Name
+  * created:time          -- Profile Creation Date
+  * rank:int              -- Social Network Rank
+  * score:int             -- Total Score
+  * favourite_count:int   -- Favourite Count
+  * follower_count:int    -- Follower Count
+  * friend_count:int      -- Friend Count
+  * retweet_count:int     -- Retweet Count
+  * statuses_count:int    -- Statuses Count
+  * email:string          -- Email String
+  * password:string       -- Password
+  * password_hash:string  -- PassHash
+  * password_salt:string  -- PassSalt
+  * remember_token:string -- Remember Token
 * Followers
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References
