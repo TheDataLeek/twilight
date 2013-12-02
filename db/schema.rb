@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202181702) do
+ActiveRecord::Schema.define(version: 20131202190747) do
 
   create_table "followers", force: true do |t|
     t.integer  "user"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20131202181702) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "password"
+    t.string   "password_salt"
+    t.string   "password_hash"
   end
 
 end
