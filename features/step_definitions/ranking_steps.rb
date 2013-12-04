@@ -1,8 +1,33 @@
 Given /I am on my user profile/ do
-    user = User.new(:username => "tester",
+    user1 = User.new(:username => "tester",
                     :email => 'tester@test.com',
                     :password => 'testtesttest')
-    user.save
+    user2 = User.new(:username => "test1",
+                    :email => 'tester@test.com',
+                    :password => 'testtesttest')
+    user3 = User.new(:username => "test2",
+                    :email => 'tester@test.com',
+                    :password => 'testtesttest')
+    user4 = User.new(:username => "test3",
+                    :email => 'tester@test.com',
+                    :password => 'testtesttest')
+    user5 = User.new(:username => "test4",
+                    :email => 'tester@test.com',
+                    :password => 'testtesttest')
+    follower1 = Followers.new(:user => "test1",
+                             :follows => "tester")
+    follower2 = Followers.new(:user => "test2",
+                             :follows => "tester")
+    follower3 = Followers.new(:user => "test3",
+                             :follows => "tester")
+    user1.save
+    user2.save
+    user3.save
+    user4.save
+    user5.save
+    follower1.save
+    follower2.save
+    follower3.save
 
     visit('/login')
     fill_in('Email', :with=>'tester@test.com')
@@ -18,7 +43,7 @@ When /I click on the ranking button/ do
 end
 
 Then /I should see a list of my followers ranked by (.*)/ do |order|
-    pending
+    page.should have_content("tester")
 end
 
 When /I click on my ranking/ do

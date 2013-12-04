@@ -1,2 +1,10 @@
 <h1>Ranking#show</h1>
 <p>Find me in app/views/ranking/show.html.erb</p>
+
+<h2><%= @user.username %> and their followers:</h2>
+
+<div>
+    <% @followers.each do |user| %>
+        <p><%= user.username %></p>
+    <% end %>
+</div>
