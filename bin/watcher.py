@@ -75,17 +75,46 @@ class RankingHandler(FileSystemEventHandler):
         self.modified     = False
         self.last_checked = time.time()
         self.time_gap     = None
+        self.missed       = []
+        self.users        = None
 
     def on_any_event(self, event):
         self.modified = True
         self.time_gap = time.time() - self.last_checked
         if self.time_gap >= 5: #900:
             self.last_checked = time.time()
+            logging.info("User Import Initiating at %s" % str(self.last_checked))
             try:
-                users = open('../watch/get_users.txt', 'r').read()
-                print(users)
+                users       = open('../watch/get_users.txt', 'r').read()[:-1]
+                user_list   = users.split('\n')
+                logging.info("Users: %s" % str(user_list))
+                try:
+                    cursor      = user_list[0:15]
+                    self.missed = user_list[15:len(user_list)]
+                except IndexError:
+                    cursor = user_list[0:len(user_list)]
+                self.users = get_profile(cursor)
+                for i in range(len(self.users)):
+                    user                       = self.users[i]
+                    user_followers             = get_followers(user['screen_name'])
+                    user_friends               = get_friends(user['screen_name'])
+                    self.users[i]['followers'] = user_followers
+                    self.users[i]['friends']   = user_friends
+                logging.info("Missed %s. Writing back to file" % str(self.missed))
+                self.__write_acquired()
+                self.__write_missed()
             except IOError:
-                error_message(sys.exc_info()[0], msg="Misaligned I/O")
+                error_message(sys.exc_info()[0], msg="Misaligned I/O... Probably not an issue, but someone should probably check it out...")
+
+    def __write_missed(self):
+        get_user_file = open('../watch/get_users.txt', 'w')
+        for user in self.missed:
+            get_user_file.write(user + '\n')
+
+    def __write_acquired(self):
+        get_user_file = open('../watch/acquired.txt', 'w')
+        for user in self.users:
+            get_user_file.write(user + '\n')
 
 
 if __name__ == "__main__":
