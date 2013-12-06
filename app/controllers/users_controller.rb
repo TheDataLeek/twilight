@@ -4,11 +4,16 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        @user.score = 0
-        @user.save
-        sign_in @user
-        redirect_to @user
-        File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % @user.username) }
+        if @user.valid?
+            @user.score = 0
+            @user.save
+            sign_in @user
+            redirect_to @user
+            File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % @user.username) }
+        else
+            flash[:failure] = "Something's Wrong"
+            render 'new'
+        end
     end
 
     def new
