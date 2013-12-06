@@ -1,7 +1,24 @@
 Twilight::Application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
   get "static_pages/login"
   get "static_pages/logout"
   get "static_pages/about"
+  get "users/index"
+  get "users/create"
+  get "users/new"
+  get "users/edit"
+  get "users/show"
+  get "users/update"
+  get "users/destroy"
+  get "ranking/show"
+
+  match '/signup',   to: 'users#new',        via: 'get'
+  match '/login',    to: 'sessions#new',     via: 'get'
+  match '/logout',   to: 'sessions#destroy', via: 'get'
+  match '/rankings', to: 'ranking#show',     via: 'get'
+
   root "static_pages#about"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

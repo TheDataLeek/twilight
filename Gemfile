@@ -28,7 +28,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Navigation bar
-gem "simple-navigation"
+#gem "simple-navigation"
+
+gem 'protected_attributes'
 
 # Password Encryption
 gem 'bcrypt-ruby', :require=>'bcrypt'

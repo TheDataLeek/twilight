@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127054228) do
+ActiveRecord::Schema.define(version: 20131202192956) do
 
   create_table "followers", force: true do |t|
     t.integer  "user"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131127054228) do
   end
 
   create_table "users", force: true do |t|
-    t.text     "screen_name"
+    t.text     "username"
     t.text     "name"
     t.text     "created"
     t.integer  "rank"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 20131127054228) do
     t.integer  "statuses_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "password"
+    t.string   "password_salt"
+    t.string   "password_hash"
+    t.string   "remember_token"
   end
 
 end

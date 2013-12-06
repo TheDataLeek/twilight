@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_uniqueness_of :username
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
+  def authenticate(email, password)
+    user = User.find_by(email: email.downcase)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
@@ -25,4 +25,17 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+  def User.new_remember_token
+      SecureRandom.urlsafe_base64
+  end
+
+  def User.encrypt(token)
+      Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+    def create_remember_token
+        self.remember_token = User.encrypt(User.new_remember_token)
+    end
 end

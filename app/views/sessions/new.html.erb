@@ -1,0 +1,14 @@
+<h1>StaticPages#login</h1>
+<p>Find me in app/views/static_pages/login.html.erb</p>
+
+<div>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+        <%= f.label :email %>
+        <%= f.text_field  :email %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <%= f.submit "Sign In" %>
+    <% end %>
+
+    <p>New User? <%= link_to "Sign Up", signup_path %></p>
+</div>
