@@ -4,9 +4,12 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        @user.score = 0
         @user.save
         sign_in @user
         redirect_to @user
+
+        File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % @user.username) }
     end
 
     def new
@@ -14,6 +17,8 @@ class UsersController < ApplicationController
     end
 
     def edit
+        File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % self.current_user.username) }
+        redirect_to show
     end
 
     def show

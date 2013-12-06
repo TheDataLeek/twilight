@@ -7,18 +7,27 @@
 <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
 
+    <p>
     <%= f.label :username %>
     <%= f.text_field :username %>
+    (This should be your Twitter screen name)
+    </p>
 
+    <p>
     <%= f.label :email %>
     <%= f.text_field :email %>
+    </p>
 
+    <p>
     <%= f.label :password %>
     <%= f.password_field :password %>
 
     <%= f.label :password_confirmation, "Confirm Password" %>
     <%= f.password_field :password_confirmation %>
+    </p>
 
+    <p>
     <%= f.submit "Create my account" %>
+    </p>
     <% end %>
 </div>
