@@ -82,12 +82,14 @@ class RankingHandler(FileSystemEventHandler):
     def on_any_event(self, event):
         self.modified = True
         self.time_gap = time.time() - self.last_checked
-        if self.time_gap >= 900:
+        if self.time_gap >= 5: #900:
             self.last_checked = time.time()
             logging.info("User Import Initiating at %s" % str(self.last_checked))
             try:
-                users       = open('./watch/get_users.txt', 'r').read()[:-1]
-                user_list   = users.split('\n')
+                users       = open('./watch/get_users.txt', 'r')
+                user_list   = users.read()[:-1].split('\n')
+                users.close()
+                print(user_list)
                 logging.info("Users: %s" % str(user_list))
                 try:
                     cursor      = user_list[0:15]
@@ -112,12 +114,15 @@ class RankingHandler(FileSystemEventHandler):
         get_user_file = open('./watch/get_users.txt', 'w')
         for user in self.missed:
             get_user_file.write(user + '\n')
+        get_user_file.close()
 
     def __write_acquired(self):
+        connection = sqlite3.connect('./db/development.sqlite3')
+        cursor     = connection.cursor()
+        logging.info("Connected to Database")
         for user in self.users:
-            connection = sqlite3.connect('./db/development.sqlite3')
-            cursor     = connection.cursor()
-            logging.info("Connected to Database")
+            print(user['id'])
+            logging.info("	Updating %i" % user['id'])
             cursor.execute('''UPDATE users SET created=?,
                                                score=?,
                                                favourite_count=?,
@@ -138,6 +143,8 @@ class RankingHandler(FileSystemEventHandler):
             logging.debug("FOLLOWER OVERLOAD")
         except IndexError:
             for follower in user['followers']['ids']:
+                print(follower)
+                logging.info("	Adding %i -> %i" % (user['id'], follower))
                 cursor.execute('''INSERT INTO followers (id, user)
                                         VALUES (?, ?)''', (user['id'],
                                                         follower))
