@@ -12,11 +12,13 @@ from watchdog.events import FileSystemEventHandler
 from get_user import *
 from rank_user import *
 
+
 fromaddr    = 'TwilightRanker@gmail.com'
 toaddrs     = ['willzfarmer@gmail.com', 'da007penguin@gmail.com']
 credentials = open('../config/gmail_credentials.txt')
 username    = credentials.readline()[:-1]
 password    = credentials.readline()[:-1]
+
 
 def main():
     open('../log/pyRank.log', 'w').close()  # Testing only. Delete for prod
@@ -28,15 +30,15 @@ def main():
 
 
 def start_watchdog():
-    event_handler = FileSystemEventHandler()
+    event_handler = RankingHandler()
     observer      = Observer()
-    observer.schedule(event_handler, path='../watch')
-    observer.start()
     log_handler   = LoggingEventHandler()
     log_observer  = Observer()
-    log_observer.schedule(log_handler, path='../watch')
-    log_observer.start()
     try:
+        observer.schedule(event_handler, path='../watch')
+        observer.start()
+        log_observer.schedule(log_handler, path='../watch')
+        log_observer.start()
         logging.info("Watching Directory")
         while True:
             time.sleep(1)
@@ -46,19 +48,73 @@ def start_watchdog():
         log_observer.stop()
     except:
         logging.info("Unexpected error: %s" % sys.exc_info()[0])
+
         observer.stop()
         log_observer.stop()
 
-        # Send Email
-        msg = "Unexpected error: %s\nScript Failed. Please log in and restart manually" % sys.exc_info()[0]
-        for receiver in toaddrs:
-            server = smtplib.SMTP('smtp.gmail.com:587')
-            server.starttls()
-            server.login(username,password)
-            server.sendmail(fromaddr, receiver, msg)
-            server.quit()
+        error_message(sys.exc_info()[0])
+
     observer.join()
     log_observer.join()
+
+
+def error_message(error, msg=None):
+    # Send Email
+    if not msg:
+        msg = "Unexpected error: %s\nRanking Script Failed. Please log in and restart manually\n\nEd, this is probably your fault..." % error
+    for receiver in toaddrs:
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(username,password)
+        server.sendmail(fromaddr, receiver, msg)
+        server.quit()
+
+
+class RankingHandler(FileSystemEventHandler):
+    def __init__(self):
+        self.modified     = False
+        self.last_checked = time.time()
+        self.time_gap     = None
+        self.missed       = []
+        self.users        = None
+
+    def on_any_event(self, event):
+        self.modified = True
+        self.time_gap = time.time() - self.last_checked
+        if self.time_gap >= 5: #900:
+            self.last_checked = time.time()
+            logging.info("User Import Initiating at %s" % str(self.last_checked))
+            try:
+                users       = open('../watch/get_users.txt', 'r').read()[:-1]
+                user_list   = users.split('\n')
+                logging.info("Users: %s" % str(user_list))
+                try:
+                    cursor      = user_list[0:15]
+                    self.missed = user_list[15:len(user_list)]
+                except IndexError:
+                    cursor = user_list[0:len(user_list)]
+                self.users = get_profile(cursor)
+                for i in range(len(self.users)):
+                    user                       = self.users[i]
+                    user_followers             = get_followers(user['screen_name'])
+                    user_friends               = get_friends(user['screen_name'])
+                    self.users[i]['followers'] = user_followers
+                    self.users[i]['friends']   = user_friends
+                logging.info("Missed %s. Writing back to file" % str(self.missed))
+                self.__write_acquired()
+                self.__write_missed()
+            except IOError:
+                error_message(sys.exc_info()[0], msg="Misaligned I/O... Probably not an issue, but someone should probably check it out...")
+
+    def __write_missed(self):
+        get_user_file = open('../watch/get_users.txt', 'w')
+        for user in self.missed:
+            get_user_file.write(user + '\n')
+
+    def __write_acquired(self):
+        get_user_file = open('../watch/acquired.txt', 'w')
+        for user in self.users:
+            get_user_file.write(user + '\n')
 
 
 if __name__ == "__main__":
