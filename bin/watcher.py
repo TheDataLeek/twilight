@@ -5,6 +5,7 @@ import logging
 import time
 import smtplib
 import watchdog
+import sqlite3
 from watchdog.observers import Observer
 from watchdog.events import LoggingEventHandler
 from watchdog.events import FileSystemEventHandler
@@ -15,14 +16,14 @@ from rank_user import *
 
 fromaddr    = 'TwilightRanker@gmail.com'
 toaddrs     = ['willzfarmer@gmail.com', 'da007penguin@gmail.com']
-credentials = open('../config/gmail_credentials.txt')
+credentials = open('./config/gmail_credentials.txt')
 username    = credentials.readline()[:-1]
 password    = credentials.readline()[:-1]
 
 
 def main():
-    open('../log/pyRank.log', 'w').close()  # Testing only. Delete for prod
-    logging.basicConfig(filename='../log/pyRank.log',
+    #open('./log/pyRank.log', 'w').close()  # Testing only. Delete for prod
+    logging.basicConfig(filename='./log/pyRank.log',
                         level=logging.DEBUG,
                         format='%(levelname)s\t|\t%(asctime)s\t-\t %(message)s')
     logging.info("Program Start")
@@ -35,9 +36,9 @@ def start_watchdog():
     log_handler   = LoggingEventHandler()
     log_observer  = Observer()
     try:
-        observer.schedule(event_handler, path='../watch')
+        observer.schedule(event_handler, path='./watch')
         observer.start()
-        log_observer.schedule(log_handler, path='../watch')
+        log_observer.schedule(log_handler, path='./watch')
         log_observer.start()
         logging.info("Watching Directory")
         while True:
@@ -85,8 +86,10 @@ class RankingHandler(FileSystemEventHandler):
             self.last_checked = time.time()
             logging.info("User Import Initiating at %s" % str(self.last_checked))
             try:
-                users       = open('../watch/get_users.txt', 'r').read()[:-1]
-                user_list   = users.split('\n')
+                users       = open('./watch/get_users.txt', 'r')
+                user_list   = users.read()[:-1].split('\n')
+                users.close()
+                print(user_list)
                 logging.info("Users: %s" % str(user_list))
                 try:
                     cursor      = user_list[0:15]
@@ -100,6 +103,7 @@ class RankingHandler(FileSystemEventHandler):
                     user_friends               = get_friends(user['screen_name'])
                     self.users[i]['followers'] = user_followers
                     self.users[i]['friends']   = user_friends
+                    self.users[i]['score']     = calculate_score(user)
                 logging.info("Missed %s. Writing back to file" % str(self.missed))
                 self.__write_acquired()
                 self.__write_missed()
@@ -107,15 +111,45 @@ class RankingHandler(FileSystemEventHandler):
                 error_message(sys.exc_info()[0], msg="Misaligned I/O... Probably not an issue, but someone should probably check it out...")
 
     def __write_missed(self):
-        get_user_file = open('../watch/get_users.txt', 'w')
+        get_user_file = open('./watch/get_users.txt', 'w')
         for user in self.missed:
             get_user_file.write(user + '\n')
+        get_user_file.close()
+        logging.info("File Cleaned")
 
     def __write_acquired(self):
-        get_user_file = open('../watch/acquired.txt', 'w')
+        connection = sqlite3.connect('./db/development.sqlite3')
+        cursor     = connection.cursor()
+        logging.info("Connected to Database")
         for user in self.users:
-            get_user_file.write(user + '\n')
-
+            logging.info("	Updating %i" % user['id'])
+            cursor.execute('''UPDATE users SET created=?,
+                                               score=?,
+                                               favourite_count=?,
+                                               follower_count=?,
+                                               friend_count=?,
+                                               statuses_count=?
+                                WHERE username=?''', (user['created_at'],
+                                                        user['score'],
+                                                        user['favourites_count'],
+                                                        user['followers_count'],
+                                                        user['friends_count'],
+                                                        user['statuses_count'],
+                                                        user['screen_name']))
+            connection.commit()
+        logging.info("Users Updated")
+        try:
+            user['followers']['errors']
+            logging.debug("FOLLOWER OVERLOAD")
+        except IndexError:
+            for follower in user['followers']['ids']:
+                print(follower)
+                logging.info("	Adding %i -> %i" % (user['id'], follower))
+                cursor.execute('''INSERT INTO followers (id, user)
+                                        VALUES (?, ?)''', (user['id'],
+                                                        follower))
+            logging.info("Followers Updated")
+            connection.commit()
 
 if __name__ == "__main__":
     sys.exit(main())
