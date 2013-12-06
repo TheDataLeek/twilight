@@ -115,13 +115,13 @@ class RankingHandler(FileSystemEventHandler):
         for user in self.missed:
             get_user_file.write(user + '\n')
         get_user_file.close()
+        logging.info("File Cleaned")
 
     def __write_acquired(self):
         connection = sqlite3.connect('./db/development.sqlite3')
         cursor     = connection.cursor()
         logging.info("Connected to Database")
         for user in self.users:
-            print(user['id'])
             logging.info("	Updating %i" % user['id'])
             cursor.execute('''UPDATE users SET created=?,
                                                score=?,
