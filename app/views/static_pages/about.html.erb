@@ -5,6 +5,7 @@
 <% if self.current_user.nil? %>
     <%= link_to "About", root_url %>
     <%= link_to "Login", "/login" %>
+    <%= link_to "Sign Up", "/signup" %>
 <% else %>
     <h3>Welcome <%= self.current_user.username %></h3>
     <%= link_to "About", root_url %>

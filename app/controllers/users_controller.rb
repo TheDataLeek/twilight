@@ -8,7 +8,6 @@ class UsersController < ApplicationController
         @user.save
         sign_in @user
         redirect_to @user
-
         File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % @user.username) }
     end
 

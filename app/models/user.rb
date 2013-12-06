@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :on => :create
-  validates_presence_of :username, :on => :create
-  validates_uniqueness_of :email
-  validates_uniqueness_of :username
+  validates :username, presence: true, length: { maximum:50 }
+  validates :email, presence: true,
+              format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i },
+              uniqueness: { case_sensitive: false }
+  validates :password, confirmation: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
 
   def authenticate(email, password)
     user = User.find_by(email: email.downcase)
