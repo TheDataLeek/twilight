@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             redirect_to @user
             File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % @user.username) }
         else
-            flash[:failure] = "Something's Wrong"
+            flash[:error] = "Something's Wrong. Please double check fields."
             render 'new'
         end
     end

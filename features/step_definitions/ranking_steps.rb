@@ -1,19 +1,24 @@
 Given /I am on my user profile/ do
     user1 = User.new(:username => "tester",
-                    :email => 'tester@test.com',
-                    :password => 'testtesttest')
+                     :rank => 50,
+                     :email => 'tester@test.com',
+                     :password => 'testtesttest')
     user2 = User.new(:username => "test1",
-                    :email => 'tester@test.com',
-                    :password => 'testtesttest')
+                     :rank => 30,
+                     :email => 'tester@test.com',
+                     :password => 'testtesttest')
     user3 = User.new(:username => "test2",
-                    :email => 'tester@test.com',
-                    :password => 'testtesttest')
+                     :rank => 100,
+                     :email => 'tester@test.com',
+                     :password => 'testtesttest')
     user4 = User.new(:username => "test3",
-                    :email => 'tester@test.com',
-                    :password => 'testtesttest')
+                     :rank => 40,
+                     :email => 'tester@test.com',
+                     :password => 'testtesttest')
     user5 = User.new(:username => "test4",
-                    :email => 'tester@test.com',
-                    :password => 'testtesttest')
+                     :rank => 60,
+                     :email => 'tester@test.com',
+                     :password => 'testtesttest')
     follower1 = Followers.new(:user => "test1",
                              :follows => "tester")
     follower2 = Followers.new(:user => "test2",
@@ -39,11 +44,12 @@ Given /I am on my user profile/ do
 end
 
 When /I click on the ranking button/ do
+    click_link("Update Info")
     click_link("Rankings")
 end
 
 Then /I should see a list of my followers ranked by (.*)/ do |order|
-    page.should have_content("tester")
+    page.should have_content("tester -- ")
 end
 
 When /I click on my ranking/ do
