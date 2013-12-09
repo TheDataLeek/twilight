@@ -28,8 +28,9 @@ Models
   * password_salt:string  -- PassSalt
   * remember_token:string -- Remember Token
 * Followers
-  * id:int:primary key   -- User ID
-  * user:int:foreign key -- User it References
+  * id:int:primary key   -- ID
+  * user:int:foreign key -- User
+  * follows:int          -- User being Followed
 * Friends
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References
