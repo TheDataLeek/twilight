@@ -11,7 +11,18 @@
 
 <div class="bar">
     <%= link_to "About", root_url, :class=>"button" %>
-    <%= link_to "Logout", "/logout", :class=>"button" %>
     <%= link_to "Rankings", "/rankings", :class=>"button" %>
     <%= link_to "Update Info", "/users/#{@user.id}/edit", :class=>"button" %>
+    <%= link_to "Logout", "/logout", :class=>"button" %>
+</div>
+
+<h2>Twitter ID: <%= @user.userid %></h2>
+<h2>Created At: <%= @user.created  %></h2>
+<h2>Score: <%= @user.score %></h2>
+<h2>Follower Count: <%= @user.follower_count %></h2>
+<h2>Friend Count: <%= @user.friend_count %></h2>
+<h2>Favourite Count: <%= @user.favourite_count %></h2>
+
+<div class="width">
+    <%= image_tag("logo.svg", :size=>"400x400", :class=>"logo") %>
 </div>
