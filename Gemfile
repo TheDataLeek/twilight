@@ -39,6 +39,8 @@ group :test do
     gem "cucumber-rails", :require=>false
     gem "capybara"
     gem "rspec-rails"
+    gem "rspec"
+    gem "rspec-core"
     gem "database_cleaner", '1.0.0.RC1'
 end
 
