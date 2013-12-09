@@ -1,5 +1,12 @@
-<h1>Ranking#show</h1>
-<p>Find me in app/views/ranking/show.html.erb</p>
+<h1>Rankings</h1>
+
+<div class="bar">
+    <%= link_to "About", root_url, :class=>"button" %>
+    <%= link_to "Home", user_path(self.current_user), class:"button" %>
+    <%= link_to "Logout", "/logout", :class=>"button" %>
+    <%= link_to "Rankings", "/rankings", :class=>"button" %>
+    <%= link_to "Update Info", "/users/#{@user.id}/edit", :class=>"button" %>
+</div>
 
 <h2><%= @user.username %> and their followers:</h2>
 

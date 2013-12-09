@@ -1,9 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Welcome <%= @user.username %></h1>
 
-<p>I am <%= @user.username %></p>
-
-<%= link_to "About", root_url %>
-<%= link_to "Logout", "/logout" %>
-<%= link_to "Rankings", "/rankings" %>
-<%= link_to "Update Info", "/users/#{@user.id}/edit" %>
+<div class="bar">
+    <%= link_to "About", root_url, :class=>"button" %>
+    <%= link_to "Logout", "/logout", :class=>"button" %>
+    <%= link_to "Rankings", "/rankings", :class=>"button" %>
+    <%= link_to "Update Info", "/users/#{@user.id}/edit", :class=>"button" %>
+</div>
