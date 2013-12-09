@@ -88,8 +88,9 @@ class RankingHandler(FileSystemEventHandler):
             try:
                 users       = open('./watch/get_users.txt', 'r')
                 user_list   = users.read()[:-1].split('\n')
-                print(user_list)
                 users.close()
+                if user_list == ['']:
+                    return
                 logging.info("Users: %s" % str(user_list))
                 try:
                     cursor      = user_list[0:15]
@@ -99,10 +100,8 @@ class RankingHandler(FileSystemEventHandler):
                 self.users = get_profile(cursor)
                 for i in range(len(self.users)):
                     user                       = self.users[i]
-                    user_followers             = get_followers(user['screen_name'])
-                    user_friends               = get_friends(user['screen_name'])
-                    self.users[i]['followers'] = user_followers
-                    self.users[i]['friends']   = user_friends
+                    self.users[i]['followers'] = get_followers(user['screen_name'])
+                    self.users[i]['friends']   = get_friends(user['screen_name'])
                     self.users[i]['score']     = calculate_score(user)
                 logging.info("Missed %s. Writing back to file" % str(self.missed))
                 self.write_acquired()
@@ -143,7 +142,6 @@ class RankingHandler(FileSystemEventHandler):
         try:
             followers = user['followers']['ids']
             for follower in followers:
-                print(follower)
                 logging.info("	Adding %i -> %i" % (user['id'], follower))
                 cursor.execute('''INSERT INTO followers (user, follows)
                                         VALUES (?, ?)''', (user['id'],

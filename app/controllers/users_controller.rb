@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update_attributes(user_params)
-            flash[:success] = "User updated"
+            flash[:notice] = "Query Sent. Information will be updated soon."
             redirect_to @user
         else
             render 'edit'
