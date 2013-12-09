@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 
 import sys, os
 import logging
@@ -88,6 +88,7 @@ class RankingHandler(FileSystemEventHandler):
             try:
                 users       = open('./watch/get_users.txt', 'r')
                 user_list   = users.read()[:-1].split('\n')
+                print(user_list)
                 users.close()
                 logging.info("Users: %s" % str(user_list))
                 try:
@@ -104,12 +105,12 @@ class RankingHandler(FileSystemEventHandler):
                     self.users[i]['friends']   = user_friends
                     self.users[i]['score']     = calculate_score(user)
                 logging.info("Missed %s. Writing back to file" % str(self.missed))
-                self.__write_acquired()
-                self.__write_missed()
+                self.write_acquired()
+                self.write_missed()
             except IOError:
                 error_message(sys.exc_info()[0], msg="Misaligned I/O... Probably not an issue, but someone should probably check it out...")
 
-    def __write_missed(self):
+    def write_missed(self):
         os.remove("./watch/get_users.txt")
         get_user_file = open('./watch/get_users.txt', 'w')
         for user in self.missed:
@@ -117,7 +118,7 @@ class RankingHandler(FileSystemEventHandler):
         get_user_file.close()
         logging.info("File Cleaned")
 
-    def __write_acquired(self):
+    def write_acquired(self):
         connection = sqlite3.connect('./db/development.sqlite3')
         cursor     = connection.cursor()
         logging.info("Connected to Database")
@@ -129,7 +130,8 @@ class RankingHandler(FileSystemEventHandler):
                                                follower_count=?,
                                                friend_count=?,
                                                statuses_count=?
-                                WHERE username=?''', (user['created_at'],
+                                WHERE username=? COLLATE NOCASE''',
+                                                       (user['created_at'],
                                                         user['score'],
                                                         user['favourites_count'],
                                                         user['followers_count'],
@@ -139,17 +141,17 @@ class RankingHandler(FileSystemEventHandler):
             connection.commit()
         logging.info("Users Updated")
         try:
-            user['followers']['errors']
-            logging.debug("FOLLOWER OVERLOAD")
-        except IndexError:
-            for follower in user['followers']['ids']:
+            followers = user['followers']['ids']
+            for follower in followers:
                 print(follower)
                 logging.info("	Adding %i -> %i" % (user['id'], follower))
-                cursor.execute('''INSERT INTO followers (id, user)
+                cursor.execute('''INSERT INTO followers (user, follows)
                                         VALUES (?, ?)''', (user['id'],
                                                         follower))
             logging.info("Followers Updated")
             connection.commit()
+        except:
+            logging.debug("FOLLOWER OVERLOAD")
 
 if __name__ == "__main__":
     sys.exit(main())
