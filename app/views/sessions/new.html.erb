@@ -1,20 +1,27 @@
-<h1>StaticPages#login</h1>
-<p>Find me in app/views/static_pages/login.html.erb</p>
+<h1>Login</h1>
 
-<% if flash[:error] -%>
-      <p class='error'><%=h flash[:error] %></p>
-  <% end -%>
-  <% if flash[:notice] -%>
-        <p class='notice'><%=h flash[:notice] %></p>
-<% end -%>
+<div class="width">
+    <% if flash[:error] -%>
+          <p class='error'><%=h flash[:error] %></p>
+      <% end -%>
+      <% if flash[:notice] -%>
+          <p class='notice'><%=h flash[:notice] %></p>
+    <% end -%>
+</div>
 
-<div>
+<div class="form">
     <%= form_for(:session, url: sessions_path) do |f| %>
+        <p>
         <%= f.label :email %>
         <%= f.text_field  :email %>
+        </p>
+        <p>
         <%= f.label :password %>
         <%= f.password_field :password %>
+        </p>
+        <p>
         <%= f.submit "Sign In" %>
+        </p>
     <% end %>
 
     <p>New User? <%= link_to "Sign Up", signup_path %></p>
