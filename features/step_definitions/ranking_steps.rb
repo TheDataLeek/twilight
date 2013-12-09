@@ -1,22 +1,17 @@
 Given /I am on my user profile/ do
     user1 = User.new(:username => "tester",
-                     :rank => 50,
                      :email => 'tester1@test.com',
                      :password => 'testtesttest')
     user2 = User.new(:username => "test1",
-                     :rank => 30,
                      :email => 'tester2@test.com',
                      :password => 'testtesttest')
     user3 = User.new(:username => "test2",
-                     :rank => 100,
                      :email => 'tester3@test.com',
                      :password => 'testtesttest')
     user4 = User.new(:username => "test3",
-                     :rank => 40,
                      :email => 'tester4@test.com',
                      :password => 'testtesttest')
     user5 = User.new(:username => "test4",
-                     :rank => 60,
                      :email => 'tester5@test.com',
                      :password => 'testtesttest')
     follower1 = Followers.new(:user => "test1",
