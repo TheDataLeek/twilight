@@ -1,30 +1,30 @@
 Given /I am on my user profile/ do
     user1 = User.new(:username => "tester",
                      :rank => 50,
-                     :email => 'tester@test.com',
+                     :email => 'tester1@test.com',
                      :password => 'testtesttest')
     user2 = User.new(:username => "test1",
                      :rank => 30,
-                     :email => 'tester@test.com',
+                     :email => 'tester2@test.com',
                      :password => 'testtesttest')
     user3 = User.new(:username => "test2",
                      :rank => 100,
-                     :email => 'tester@test.com',
+                     :email => 'tester3@test.com',
                      :password => 'testtesttest')
     user4 = User.new(:username => "test3",
                      :rank => 40,
-                     :email => 'tester@test.com',
+                     :email => 'tester4@test.com',
                      :password => 'testtesttest')
     user5 = User.new(:username => "test4",
                      :rank => 60,
-                     :email => 'tester@test.com',
+                     :email => 'tester5@test.com',
                      :password => 'testtesttest')
     follower1 = Followers.new(:user => "test1",
-                             :follows => "tester")
+                              :follows => "tester")
     follower2 = Followers.new(:user => "test2",
-                             :follows => "tester")
+                              :follows => "tester")
     follower3 = Followers.new(:user => "test3",
-                             :follows => "tester")
+                              :follows => "tester")
     user1.save
     user2.save
     user3.save
@@ -35,7 +35,7 @@ Given /I am on my user profile/ do
     follower3.save
 
     visit('/login')
-    fill_in('Email', :with=>'tester@test.com')
+    fill_in('Email', :with=>'tester1@test.com')
     fill_in('Password', :with=>'testtesttest')
     click_button('Sign In')
 
