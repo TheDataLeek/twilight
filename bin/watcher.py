@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import sys, os
 import logging
 import time
 import smtplib
@@ -89,7 +89,6 @@ class RankingHandler(FileSystemEventHandler):
                 users       = open('./watch/get_users.txt', 'r')
                 user_list   = users.read()[:-1].split('\n')
                 users.close()
-                print(user_list)
                 logging.info("Users: %s" % str(user_list))
                 try:
                     cursor      = user_list[0:15]
@@ -111,6 +110,7 @@ class RankingHandler(FileSystemEventHandler):
                 error_message(sys.exc_info()[0], msg="Misaligned I/O... Probably not an issue, but someone should probably check it out...")
 
     def __write_missed(self):
+        os.remove("./watch/get_users.txt")
         get_user_file = open('./watch/get_users.txt', 'w')
         for user in self.missed:
             get_user_file.write(user + '\n')
