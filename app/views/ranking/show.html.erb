@@ -10,8 +10,11 @@
 
 <h2><%= @user.username %> and their followers:</h2>
 
-<div>
+<table class="rankings" border="1">
     <% @followers.each do |user| %>
-        <p><%= user.username %> -- <%= user.score %></p>
+        <tr>
+            <td><%= user.username %></td>
+            <td><%= user.score %></td>
+        </tr>
     <% end %>
-</div>
+</table>

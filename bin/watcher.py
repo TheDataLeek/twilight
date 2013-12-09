@@ -98,11 +98,15 @@ class RankingHandler(FileSystemEventHandler):
                 except IndexError:
                     cursor = user_list[0:len(user_list)]
                 self.users = get_profile(cursor)
+                previous_user = None
                 for i in range(len(self.users)):
                     user                       = self.users[i]
-                    self.users[i]['followers'] = get_followers(user['screen_name'])
-                    self.users[i]['friends']   = get_friends(user['screen_name'])
-                    self.users[i]['score']     = calculate_score(user)
+                    if user['id'] != previous_user:
+                        print(user['screen_name'])
+                        self.users[i]['followers'] = get_followers(user['screen_name'])
+                        self.users[i]['friends']   = get_friends(user['screen_name'])
+                        self.users[i]['score']     = calculate_score(user)
+                    previous_user = user['id']
                 logging.info("Missed %s. Writing back to file" % str(self.missed))
                 self.write_acquired()
                 self.write_missed()
@@ -123,14 +127,16 @@ class RankingHandler(FileSystemEventHandler):
         logging.info("Connected to Database")
         for user in self.users:
             logging.info("	Updating %i" % user['id'])
-            cursor.execute('''UPDATE users SET created=?,
+            cursor.execute('''UPDATE users SET userid=?,
+                                               created=?,
                                                score=?,
                                                favourite_count=?,
                                                follower_count=?,
                                                friend_count=?,
                                                statuses_count=?
                                 WHERE username=? COLLATE NOCASE''',
-                                                       (user['created_at'],
+                                                       (user['id'],
+                                                        user['created_at'],
                                                         user['score'],
                                                         user['favourites_count'],
                                                         user['followers_count'],
@@ -143,7 +149,7 @@ class RankingHandler(FileSystemEventHandler):
             followers = user['followers']['ids']
             for follower in followers:
                 logging.info("	Adding %i -> %i" % (user['id'], follower))
-                cursor.execute('''INSERT INTO followers (user, follows)
+                cursor.execute('''INSERT INTO followers (follows, user)
                                         VALUES (?, ?)''', (user['id'],
                                                         follower))
             logging.info("Followers Updated")
