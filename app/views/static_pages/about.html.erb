@@ -15,6 +15,29 @@
     <% end %>
 </div>
 
+<table class="rankings" border="1" align="center">
+    <tr>
+        <td><strong>User ID</strong></td>
+        <td><strong>Username</strong></td>
+        <td><strong>Created At</strong></td>
+        <td><strong>Follower Count</strong></td>
+        <td><strong>Friend Count</strong></td>
+        <td><strong>Favourite Count</strong></td>
+        <td><strong>Score</strong></td>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.userid %></td>
+            <td><%= user.username %></td>
+            <td><%= user.created %></td>
+            <td><%= user.follower_count %></td>
+            <td><%= user.friend_count %></td>
+            <td><%= user.favourite_count %></td>
+            <td><%= user.score %></td>
+        </tr>
+    <% end %>
+</table>
+
 <div class="width">
     <%= image_tag("logo.svg", :size=>"800x600", :class=>"logo") %>
 </div>

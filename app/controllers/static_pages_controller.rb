@@ -6,8 +6,7 @@ class StaticPagesController < ApplicationController
     end
 
     def about
-        @about  = "/static_pages/about"
-        @login  = "/sessions/new"
-        @logout = "/static_pages/logout"
+        @users = User.all
+        @users.sort_by!{|e| -e[:score]}
     end
 end
