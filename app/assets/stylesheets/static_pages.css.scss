@@ -9,3 +9,18 @@
     background: red;
 }
 
+.rankings {
+    border: 1px solid blue;
+    border-collapse:collapse;
+    th {
+        padding:5px;
+    }
+    td {
+        padding:5px;
+    }
+}
+
+.info {
+    text-align:center;
+    width:50%;
+}
