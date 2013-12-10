@@ -61,8 +61,6 @@
   
     <li class="file"><a href="../app/assets/images/logo_svg.html">logo.svg</a>
   
-    <li class="file"><a href="../app/assets/images/logo_square_svg.html">logo_square.svg</a>
-  
     <li class="file"><a href="../app/assets/javascripts/application_js.html">application.js</a>
   
     <li class="file"><a href="../app/assets/javascripts/ranking_js_coffee.html">ranking.js.coffee</a>
@@ -93,7 +91,35 @@
   
     <li class="file"><a href="../config/gmail_credentials_txt.html">gmail_credentials</a>
   
+    <li class="file"><a href="../db/test_sqlite3.html">test.sqlite3</a>
+  
+    <li class="file"><a href="../doc/Object_html.html">Object.html</a>
+  
+    <li class="file"><a href="../doc/bin/get_user_py_html.html">get_user_py.html</a>
+  
+    <li class="file"><a href="../doc/bin/rank_user_py_html.html">rank_user_py.html</a>
+  
+    <li class="file"><a href="../doc/bin/watcher_py_html.html">watcher_py.html</a>
+  
     <li class="file"><a href="../doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="../doc/index_html.html">index.html</a>
+  
+    <li class="file"><a href="../doc/js/darkfish_js.html">darkfish.js</a>
+  
+    <li class="file"><a href="../doc/js/jquery_js.html">jquery.js</a>
+  
+    <li class="file"><a href="../doc/js/navigation_js.html">navigation.js</a>
+  
+    <li class="file"><a href="../doc/js/search_js.html">search.js</a>
+  
+    <li class="file"><a href="../doc/js/search_index_js.html">search_index.js</a>
+  
+    <li class="file"><a href="../doc/js/searcher_js.html">searcher.js</a>
+  
+    <li class="file"><a href="../doc/rdoc_css.html">rdoc.css</a>
+  
+    <li class="file"><a href="../doc/table_of_contents_html.html">table_of_contents.html</a>
   
     <li class="file"><a href="../features/ranking_feature.html">ranking.feature</a>
   
@@ -119,6 +145,8 @@
   
     <li class="file"><a href="../public/favicon_ico.html">favicon.ico</a>
   
+    <li class="file"><a href="../public/logo_svg.html">logo.svg</a>
+  
     <li class="file"><a href="../public/robots_txt.html">robots</a>
   
     <li class="file"><a href="../pythonAnalysis/pyRank_py.html">pyRank.py</a>
@@ -126,8 +154,6 @@
     <li class="file"><a href="../pythonAnalysis/ranking_R.html">ranking.R</a>
   
     <li class="file"><a href="../pythonAnalysis/twitterImport_py.html">twitterImport.py</a>
-  
-    <li class="file"><a href="../tmp/pids/server_pid.html">server.pid</a>
   
     <li class="file"><a href="../watch/get_users_txt.html">get_users</a>
   
@@ -231,6 +257,10 @@
   
     <li><a href="../User.html">User</a>
   
+    <li><a href="../UserId.html">UserId</a>
+  
+    <li><a href="../UserImage.html">UserImage</a>
+  
     <li><a href="../UserTest.html">UserTest</a>
   
     <li><a href="../UsersController.html">UsersController</a>
@@ -249,11 +279,12 @@
 
 <div id="documentation" class="description">
   
-<p>#!/usr/bin/env python</p>
+<p>#!/usr/bin/env python2.7</p>
 
-<p>import sys import logging import time import smtplib import watchdog import
-sqlite3 from watchdog.observers import Observer from watchdog.events import
-LoggingEventHandler from watchdog.events import FileSystemEventHandler</p>
+<p>import sys, os import logging import time import smtplib import watchdog
+import sqlite3 from watchdog.observers import Observer from watchdog.events
+import LoggingEventHandler from watchdog.events import
+FileSystemEventHandler</p>
 
 <p>from get_user import * from rank_user import *</p>
 
@@ -332,7 +363,8 @@ for receiver in toaddrs:
             <span class="ruby-identifier">users</span>       = <span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;./watch/get_users.txt&#39;</span>, <span class="ruby-string">&#39;r&#39;</span>)
             <span class="ruby-identifier">user_list</span>   = <span class="ruby-identifier">users</span>.<span class="ruby-identifier">read</span>()[:<span class="ruby-value">-1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;\n&#39;</span>)
             <span class="ruby-identifier">users</span>.<span class="ruby-identifier">close</span>()
-            <span class="ruby-identifier">print</span>(<span class="ruby-identifier">user_list</span>)
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">user_list</span> <span class="ruby-operator">==</span> [<span class="ruby-string">&#39;&#39;</span>]<span class="ruby-operator">:</span>
+                <span class="ruby-keyword">return</span>
             <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;Users: %s&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">str</span>(<span class="ruby-identifier">user_list</span>))
             <span class="ruby-identifier">try</span><span class="ruby-operator">:</span>
                 <span class="ruby-identifier">cursor</span>      = <span class="ruby-identifier">user_list</span>[<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-value">15</span>]
@@ -340,59 +372,88 @@ for receiver in toaddrs:
             <span class="ruby-identifier">except</span> <span class="ruby-constant">IndexError</span><span class="ruby-operator">:</span>
                 <span class="ruby-identifier">cursor</span> = <span class="ruby-identifier">user_list</span>[<span class="ruby-value">0</span><span class="ruby-operator">:</span><span class="ruby-identifier">len</span>(<span class="ruby-identifier">user_list</span>)]
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span> = <span class="ruby-identifier">get_profile</span>(<span class="ruby-identifier">cursor</span>)
+            <span class="ruby-identifier">previous_user</span> = <span class="ruby-constant">None</span>
             <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">range</span>(<span class="ruby-identifier">len</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>))<span class="ruby-operator">:</span>
                 <span class="ruby-identifier">user</span>                       = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>]
-                <span class="ruby-identifier">user_followers</span>             = <span class="ruby-identifier">get_followers</span>(<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;screen_name&#39;</span>])
-                <span class="ruby-identifier">user_friends</span>               = <span class="ruby-identifier">get_friends</span>(<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;screen_name&#39;</span>])
-                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>][<span class="ruby-string">&#39;followers&#39;</span>] = <span class="ruby-identifier">user_followers</span>
-                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>][<span class="ruby-string">&#39;friends&#39;</span>]   = <span class="ruby-identifier">user_friends</span>
-                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>][<span class="ruby-string">&#39;score&#39;</span>]     = <span class="ruby-identifier">calculate_score</span>(<span class="ruby-identifier">user</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">previous_user</span><span class="ruby-operator">:</span>
+                    <span class="ruby-identifier">print</span>(<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;screen_name&#39;</span>])
+                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>][<span class="ruby-string">&#39;followers&#39;</span>] = <span class="ruby-identifier">get_followers</span>(<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;screen_name&#39;</span>])
+                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>][<span class="ruby-string">&#39;friends&#39;</span>]   = <span class="ruby-identifier">get_friends</span>(<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;screen_name&#39;</span>])
+                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span>[<span class="ruby-identifier">i</span>][<span class="ruby-string">&#39;score&#39;</span>]     = <span class="ruby-identifier">calculate_score</span>(<span class="ruby-identifier">user</span>)
+                <span class="ruby-identifier">previous_user</span> = <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>]
             <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;Missed %s. Writing back to file&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">str</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">missed</span>))
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">__write_acquired</span>()
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">__write_missed</span>()
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">write_acquired</span>()
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">write_missed</span>()
         <span class="ruby-identifier">except</span> <span class="ruby-constant">IOError</span><span class="ruby-operator">:</span>
             <span class="ruby-identifier">error_message</span>(<span class="ruby-identifier">sys</span>.<span class="ruby-identifier">exc_info</span>()[<span class="ruby-value">0</span>], <span class="ruby-identifier">msg</span>=<span class="ruby-string">&quot;Misaligned I/O... Probably not an issue, but someone should probably check it out...&quot;</span>)
 
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">__write_missed</span>(<span class="ruby-keyword">self</span>)<span class="ruby-operator">:</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_missed</span>(<span class="ruby-keyword">self</span>)<span class="ruby-operator">:</span>
+    <span class="ruby-identifier">os</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-string">&quot;./watch/get_users.txt&quot;</span>)
     <span class="ruby-identifier">get_user_file</span> = <span class="ruby-identifier">open</span>(<span class="ruby-string">&#39;./watch/get_users.txt&#39;</span>, <span class="ruby-string">&#39;w&#39;</span>)
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">user</span> <span class="ruby-keyword">in</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">missed</span><span class="ruby-operator">:</span>
         <span class="ruby-identifier">get_user_file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">user</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;\n&#39;</span>)
     <span class="ruby-identifier">get_user_file</span>.<span class="ruby-identifier">close</span>()
     <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;File Cleaned&quot;</span>)
 
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">__write_acquired</span>(<span class="ruby-keyword">self</span>)<span class="ruby-operator">:</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_acquired</span>(<span class="ruby-keyword">self</span>)<span class="ruby-operator">:</span>
     <span class="ruby-identifier">connection</span> = <span class="ruby-identifier">sqlite3</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-string">&#39;./db/development.sqlite3&#39;</span>)
     <span class="ruby-identifier">cursor</span>     = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">cursor</span>()
     <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;Connected to Database&quot;</span>)
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">user</span> <span class="ruby-keyword">in</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span><span class="ruby-operator">:</span>
         <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;      Updating %i&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>])
-        <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;UPDATE users SET created=?,
+        <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;UPDATE users SET userid=?,
+                                           created=?,
                                            score=?,
                                            favourite_count=?,
                                            follower_count=?,
                                            friend_count=?,
-                                           statuses_count=?
-                            WHERE username=?&#39;</span><span class="ruby-string">&#39;&#39;</span>, (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;created_at&#39;</span>],
+                                           statuses_count=?,
+                                           userimage=?
+                            WHERE username=? COLLATE NOCASE&#39;</span><span class="ruby-string">&#39;&#39;</span>,
+                                                   (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>],
+                                                    <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;created_at&#39;</span>],
                                                     <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;score&#39;</span>],
                                                     <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;favourites_count&#39;</span>],
                                                     <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;followers_count&#39;</span>],
                                                     <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;friends_count&#39;</span>],
                                                     <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;statuses_count&#39;</span>],
+                                                    <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;profile_image_url&#39;</span>],
                                                     <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;screen_name&#39;</span>]))
         <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">commit</span>()
     <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;Users Updated&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">users</span> = []
     <span class="ruby-identifier">try</span><span class="ruby-operator">:</span>
-        <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;followers&#39;</span>][<span class="ruby-string">&#39;errors&#39;</span>]
-        <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-string">&quot;FOLLOWER OVERLOAD&quot;</span>)
-    <span class="ruby-identifier">except</span> <span class="ruby-constant">IndexError</span><span class="ruby-operator">:</span>
-        <span class="ruby-keyword">for</span> <span class="ruby-identifier">follower</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;followers&#39;</span>][<span class="ruby-string">&#39;ids&#39;</span>]<span class="ruby-operator">:</span>
-            <span class="ruby-identifier">print</span>(<span class="ruby-identifier">follower</span>)
+        <span class="ruby-identifier">followers</span> = <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;followers&#39;</span>][<span class="ruby-string">&#39;ids&#39;</span>]
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">follower</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">followers</span><span class="ruby-operator">:</span>
             <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;  Adding %i -&gt; %i&quot;</span> <span class="ruby-operator">%</span> (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>], <span class="ruby-identifier">follower</span>))
-            <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;INSERT INTO followers (id, user)
-                                    VALUES (?, ?)&#39;</span><span class="ruby-string">&#39;&#39;</span>, (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>],
-                                                    <span class="ruby-identifier">follower</span>))
+            <span class="ruby-identifier">exists</span> = <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;SELECT *
+                                        FROM followers
+                                        WHERE user=? AND follows=?&#39;</span><span class="ruby-string">&#39;&#39;</span>,
+                                        (<span class="ruby-identifier">follower</span>, <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>])).<span class="ruby-identifier">fetchall</span>()
+            <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">exists</span><span class="ruby-operator">:</span>
+                <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;INSERT INTO followers (follows, user)
+                                        VALUES (?, ?)&#39;</span><span class="ruby-string">&#39;&#39;</span>, (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>],
+                                                        <span class="ruby-identifier">follower</span>))
         <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;Followers Updated&quot;</span>)
         <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">commit</span>()
+    <span class="ruby-identifier">except</span><span class="ruby-operator">:</span>
+        <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-string">&quot;FOLLOWER OVERLOAD&quot;</span>)
+    <span class="ruby-identifier">try</span><span class="ruby-operator">:</span>
+        <span class="ruby-identifier">friends</span> = <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;friends&#39;</span>][<span class="ruby-string">&#39;users&#39;</span>]
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">frienduser</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">friends</span><span class="ruby-operator">:</span>
+            <span class="ruby-identifier">friend</span> = <span class="ruby-identifier">frienduser</span>[<span class="ruby-string">&#39;id&#39;</span>]
+            <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;  Adding %i -&gt; %i&quot;</span> <span class="ruby-operator">%</span> (<span class="ruby-identifier">friend</span>, <span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>]))
+            <span class="ruby-identifier">exists</span> = <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;SELECT * FROM followers
+                                        WHERE user=? AND follows=?&#39;</span><span class="ruby-string">&#39;&#39;</span>,
+                                        (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>], <span class="ruby-identifier">friend</span>)).<span class="ruby-identifier">fetchall</span>()
+            <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">exists</span><span class="ruby-operator">:</span>
+                <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;INSERT INTO followers (user, follows)
+                                        VALUES (?, ?)&#39;</span><span class="ruby-string">&#39;&#39;</span>, (<span class="ruby-identifier">user</span>[<span class="ruby-string">&#39;id&#39;</span>],
+                                                           <span class="ruby-identifier">friend</span>))
+        <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">info</span>(<span class="ruby-string">&quot;Followers Updated&quot;</span>)
+        <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">commit</span>()
+    <span class="ruby-identifier">except</span><span class="ruby-operator">:</span>
+        <span class="ruby-identifier">logging</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-string">&quot;FRIEND OVERLOAD&quot;</span>)
 </pre>
 
 <p>if __name__ == “__main__”:</p>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>watcher_py.html - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li class="file"><a href="../../README_md.html">README</a>
+  
+    <li class="file"><a href="../../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../../app/assets/images/logo_svg.html">logo.svg</a>
+  
+    <li class="file"><a href="../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li class="file"><a href="../../app/assets/javascripts/ranking_js_coffee.html">ranking.js.coffee</a>
+  
+    <li class="file"><a href="../../app/assets/javascripts/sessions_js_coffee.html">sessions.js.coffee</a>
+  
+    <li class="file"><a href="../../app/assets/javascripts/static_pages_js_coffee.html">static_pages.js.coffee</a>
+  
+    <li class="file"><a href="../../app/assets/javascripts/users_js_coffee.html">users.js.coffee</a>
+  
+    <li class="file"><a href="../../app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li class="file"><a href="../../app/assets/stylesheets/ranking_css_scss.html">ranking.css.scss</a>
+  
+    <li class="file"><a href="../../app/assets/stylesheets/sessions_css_scss.html">sessions.css.scss</a>
+  
+    <li class="file"><a href="../../app/assets/stylesheets/static_pages_css_scss.html">static_pages.css.scss</a>
+  
+    <li class="file"><a href="../../app/assets/stylesheets/users_css_scss.html">users.css.scss</a>
+  
+    <li class="file"><a href="../../bin/get_user_py.html">get_user.py</a>
+  
+    <li class="file"><a href="../../bin/rank_user_py.html">rank_user.py</a>
+  
+    <li class="file"><a href="../../bin/watcher_py.html">watcher.py</a>
+  
+    <li class="file"><a href="../../config_ru.html">config.ru</a>
+  
+    <li class="file"><a href="../../config/gmail_credentials_txt.html">gmail_credentials</a>
+  
+    <li class="file"><a href="../../db/test_sqlite3.html">test.sqlite3</a>
+  
+    <li class="file"><a href="../../doc/Object_html.html">Object.html</a>
+  
+    <li class="file"><a href="../../doc/bin/get_user_py_html.html">get_user_py.html</a>
+  
+    <li class="file"><a href="../../doc/bin/rank_user_py_html.html">rank_user_py.html</a>
+  
+    <li class="file"><a href="../../doc/bin/watcher_py_html.html">watcher_py.html</a>
+  
+    <li class="file"><a href="../../doc/created_rid.html">created.rid</a>
+  
+    <li class="file"><a href="../../doc/index_html.html">index.html</a>
+  
+    <li class="file"><a href="../../doc/js/darkfish_js.html">darkfish.js</a>
+  
+    <li class="file"><a href="../../doc/js/jquery_js.html">jquery.js</a>
+  
+    <li class="file"><a href="../../doc/js/navigation_js.html">navigation.js</a>
+  
+    <li class="file"><a href="../../doc/js/search_js.html">search.js</a>
+  
+    <li class="file"><a href="../../doc/js/search_index_js.html">search_index.js</a>
+  
+    <li class="file"><a href="../../doc/js/searcher_js.html">searcher.js</a>
+  
+    <li class="file"><a href="../../doc/rdoc_css.html">rdoc.css</a>
+  
+    <li class="file"><a href="../../doc/table_of_contents_html.html">table_of_contents.html</a>
+  
+    <li class="file"><a href="../../features/ranking_feature.html">ranking.feature</a>
+  
+    <li class="file"><a href="../../features/user_account_feature.html">user_account.feature</a>
+  
+    <li class="file"><a href="../../features/visualization_feature.html">visualization.feature</a>
+  
+    <li class="file"><a href="../../lib/tasks/cucumber_rake.html">cucumber.rake</a>
+  
+    <li class="file"><a href="../../log/development_log.html">development.log</a>
+  
+    <li class="file"><a href="../../log/pyRank_log.html">pyRank.log</a>
+  
+    <li class="file"><a href="../../log/test_log.html">test.log</a>
+  
+    <li class="file"><a href="../../notes_to_instructer_txt.html">notes_to_instructer</a>
+  
+    <li class="file"><a href="../../public/404_html.html">404.html</a>
+  
+    <li class="file"><a href="../../public/422_html.html">422.html</a>
+  
+    <li class="file"><a href="../../public/500_html.html">500.html</a>
+  
+    <li class="file"><a href="../../public/favicon_ico.html">favicon.ico</a>
+  
+    <li class="file"><a href="../../public/logo_svg.html">logo.svg</a>
+  
+    <li class="file"><a href="../../public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="../../pythonAnalysis/pyRank_py.html">pyRank.py</a>
+  
+    <li class="file"><a href="../../pythonAnalysis/ranking_R.html">ranking.R</a>
+  
+    <li class="file"><a href="../../pythonAnalysis/twitterImport_py.html">twitterImport.py</a>
+  
+    <li class="file"><a href="../../watch/get_users_txt.html">get_users</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../ActionController.html">ActionController</a>
+  
+    <li><a href="../../ActiveRecord.html">ActiveRecord</a>
+  
+    <li><a href="../../ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="../../ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="../../AddUserEmailAndHash.html">AddUserEmailAndHash</a>
+  
+    <li><a href="../../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../CreateFollowers.html">CreateFollowers</a>
+  
+    <li><a href="../../CreateFriends.html">CreateFriends</a>
+  
+    <li><a href="../../CreateNetworks.html">CreateNetworks</a>
+  
+    <li><a href="../../CreateRetweets.html">CreateRetweets</a>
+  
+    <li><a href="../../CreateUsers.html">CreateUsers</a>
+  
+    <li><a href="../../Cucumber.html">Cucumber</a>
+  
+    <li><a href="../../Cucumber/Rails.html">Cucumber::Rails</a>
+  
+    <li><a href="../../FollowTable.html">FollowTable</a>
+  
+    <li><a href="../../Followers.html">Followers</a>
+  
+    <li><a href="../../FollowersTest.html">FollowersTest</a>
+  
+    <li><a href="../../Friends.html">Friends</a>
+  
+    <li><a href="../../FriendsTest.html">FriendsTest</a>
+  
+    <li><a href="../../HashSalt.html">HashSalt</a>
+  
+    <li><a href="../../HashToPassword.html">HashToPassword</a>
+  
+    <li><a href="../../Logger.html">Logger</a>
+  
+    <li><a href="../../Network.html">Network</a>
+  
+    <li><a href="../../NetworkTest.html">NetworkTest</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../RankingController.html">RankingController</a>
+  
+    <li><a href="../../RankingControllerTest.html">RankingControllerTest</a>
+  
+    <li><a href="../../RankingHelper.html">RankingHelper</a>
+  
+    <li><a href="../../RankingHelperTest.html">RankingHelperTest</a>
+  
+    <li><a href="../../RememberToken.html">RememberToken</a>
+  
+    <li><a href="../../Renderer.html">Renderer</a>
+  
+    <li><a href="../../Retweets.html">Retweets</a>
+  
+    <li><a href="../../RetweetsTest.html">RetweetsTest</a>
+  
+    <li><a href="../../ScreenToUsername.html">ScreenToUsername</a>
+  
+    <li><a href="../../SessionsController.html">SessionsController</a>
+  
+    <li><a href="../../SessionsControllerTest.html">SessionsControllerTest</a>
+  
+    <li><a href="../../SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="../../SessionsHelperTest.html">SessionsHelperTest</a>
+  
+    <li><a href="../../SimpleNavigation.html">SimpleNavigation</a>
+  
+    <li><a href="../../StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="../../StaticPagesControllerTest.html">StaticPagesControllerTest</a>
+  
+    <li><a href="../../StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="../../StaticPagesHelperTest.html">StaticPagesHelperTest</a>
+  
+    <li><a href="../../Twilight.html">Twilight</a>
+  
+    <li><a href="../../Twilight/Application.html">Twilight::Application</a>
+  
+    <li><a href="../../User.html">User</a>
+  
+    <li><a href="../../UserId.html">UserId</a>
+  
+    <li><a href="../../UserImage.html">UserImage</a>
+  
+    <li><a href="../../UserTest.html">UserTest</a>
+  
+    <li><a href="../../UsersController.html">UsersController</a>
+  
+    <li><a href="../../UsersControllerTest.html">UsersControllerTest</a>
+  
+    <li><a href="../../UsersHelper.html">UsersHelper</a>
+  
+    <li><a href="../../UsersHelperTest.html">UsersHelperTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>&lt;!DOCTYPE html&gt;</p>
+
+<p>&lt;html&gt; &lt;head&gt; &lt;meta content=“text/html; charset=UTF-8”
+http-equiv=“Content-Type”&gt;</p>
+
+<p>&lt;title&gt;watcher.py - RDoc Documentation&lt;/title&gt;</p>
+
+<p>&lt;link type=“text/css” media=“screen” href=“../rdoc.css”
+rel=“stylesheet”&gt;</p>
+
+<p>&lt;script type=“text/javascript”&gt;</p>
+
+<pre>var rdoc_rel_prefix = &quot;../&quot;;</pre>
+
+<p>&lt;/script&gt;</p>
+
+<p>&lt;script type=“text/javascript” charset=“utf-8”
+src=“../js/jquery.js”&gt;&lt;/script&gt; &lt;script type=“text/javascript”
+charset=“utf-8” src=“../js/navigation.js”&gt;&lt;/script&gt; &lt;script
+type=“text/javascript” charset=“utf-8”
+src=“../js/search_index.js”&gt;&lt;/script&gt; &lt;script
+type=“text/javascript” charset=“utf-8”
+src=“../js/search.js”&gt;&lt;/script&gt; &lt;script type=“text/javascript”
+charset=“utf-8” src=“../js/searcher.js”&gt;&lt;/script&gt; &lt;script
+type=“text/javascript” charset=“utf-8”
+src=“../js/darkfish.js”&gt;&lt;/script&gt;</p>
+
+<p>&lt;body class=“file”&gt; &lt;nav id=“metadata”&gt;</p>
+
+<pre>&lt;nav id=&quot;home-section&quot; class=&quot;section&quot;&gt;
+&lt;h3 class=&quot;section-header&quot;&gt;
+  &lt;a href=&quot;../index.html&quot;&gt;Home&lt;/a&gt;
+  &lt;a href=&quot;../table_of_contents.html#classes&quot;&gt;Classes&lt;/a&gt;
+  &lt;a href=&quot;../table_of_contents.html#methods&quot;&gt;Methods&lt;/a&gt;
+&lt;/h3&gt;</pre>
+
+<p>&lt;/nav&gt;</p>
+
+<pre>&lt;nav id=&quot;search-section&quot; class=&quot;section project-section&quot; class=&quot;initially-hidden&quot;&gt;
+&lt;form action=&quot;#&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;
+  &lt;h3 class=&quot;section-header&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;search&quot; placeholder=&quot;Search&quot; id=&quot;search-field&quot;
+           title=&quot;Type to search, Up and Down to navigate, Enter to load&quot;&gt;
+  &lt;/h3&gt;
+&lt;/form&gt;
+
+&lt;ul id=&quot;search-results&quot; class=&quot;initially-hidden&quot;&gt;&lt;/ul&gt;</pre>
+
+<p>&lt;/nav&gt;</p>
+
+<pre>&lt;div id=&quot;project-metadata&quot;&gt;
+  &lt;nav id=&quot;fileindex-section&quot; class=&quot;section project-section&quot;&gt;
+&lt;h3 class=&quot;section-header&quot;&gt;Pages&lt;/h3&gt;
+
+&lt;ul&gt;
+
+  &lt;li class=&quot;file&quot;&gt;&lt;a href=&quot;../bin/get_user_py.html&quot;&gt;get_user.py&lt;/a&gt;
+
+  &lt;li class=&quot;file&quot;&gt;&lt;a href=&quot;../bin/rank_user_py.html&quot;&gt;rank_user.py&lt;/a&gt;
+
+  &lt;li class=&quot;file&quot;&gt;&lt;a href=&quot;../bin/watcher_py.html&quot;&gt;watcher.py&lt;/a&gt;
+
+&lt;/ul&gt;</pre>
+
+<p>&lt;/nav&gt;</p>
+
+<pre>  &lt;nav id=&quot;classindex-section&quot; class=&quot;section project-section&quot;&gt;
+&lt;h3 class=&quot;section-header&quot;&gt;Class and Module Index&lt;/h3&gt;
+
+&lt;ul class=&quot;link-list&quot;&gt;
+
+  &lt;li&gt;&lt;a href=&quot;../Object.html&quot;&gt;Object&lt;/a&gt;
+
+&lt;/ul&gt;</pre>
+
+<p>&lt;/nav&gt;</p>
+
+<pre>&lt;/div&gt;</pre>
+
+<p>&lt;/nav&gt;</p>
+
+<p>&lt;div id=“documentation” class=“description”&gt;</p>
+
+<p>&lt;p&gt;#!/usr/bin/env python2.7&lt;/p&gt;</p>
+
+<p>&lt;p&gt;import sys, os import logging import time import smtplib import
+watchdog import sqlite3 from watchdog.observers import Observer from
+watchdog.events import LoggingEventHandler from watchdog.events import
+FileSystemEventHandler&lt;/p&gt;</p>
+
+<p>&lt;p&gt;from get_user import * from rank_user import *&lt;/p&gt;</p>
+
+<p>&lt;p&gt;fromaddr    = &amp;#39;TwilightRanker@gmail.com&amp;#39; toaddrs  
+=</p>
+<dl class="rdoc-list label-list"><dt>&amp;#39;willzfarmer@gmail.com&amp;#39;, &amp;#39;da007penguin@gmail.com&amp;#39;
+<dd>
+<p>credentials = open(&amp;#39;./config/gmail_credentials.txt&amp;#39;)
+username    = &lt;a href=“<a
+href="http://:-1">credentials.readline()</a">:-1”>credentials.readline()</a</a>&gt;
+password    = &lt;a href=“<a
+href="http://:-1">credentials.readline()</a></p">:-1”>credentials.readline()</a></p</a>&gt;</p>
+
+<p>&lt;p&gt;def main():&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;#open(&amp;#39;./log/pyRank.log&amp;#39;,
+&amp;#39;w&amp;#39;).close()  # Testing only. Delete for prod
+logging.basicConfig(filename=&amp;#39;./log/pyRank.log&amp;#39;,</p>
+
+<pre>level=logging.DEBUG,
+format=&amp;#39;%(levelname)s\t|\t%(asctime)s\t-\t %(message)s&amp;#39;)</pre>
+
+<p>logging.info(&amp;quot;Program Start&amp;quot;)
+start_watchdog()&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;def start_watchdog():&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;event_handler = RankingHandler() observer      = Observer()
+log_handler   = LoggingEventHandler() log_observer  = Observer() try:</p>
+
+<pre>observer.schedule(event_handler, path=&amp;#39;./watch&amp;#39;)
+observer.start()
+log_observer.schedule(log_handler, path=&amp;#39;./watch&amp;#39;)
+log_observer.start()
+logging.info(&amp;quot;Watching Directory&amp;quot;)
+while True:
+    time.sleep(1)</pre>
+
+<p>except KeyboardInterrupt:</p>
+
+<pre>logging.info(&amp;quot;Kill message sent. Aborting&amp;quot;)
+observer.stop()
+log_observer.stop()</pre>
+
+<p>except:</p>
+
+<pre>logging.info(&amp;quot;Unexpected error: %s&amp;quot; % sys.exc_info()[0])
+
+observer.stop()
+log_observer.stop()
+
+error_message(sys.exc_info()[0])</pre>
+
+<p>observer.join() log_observer.join()&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;def error_message(error, msg=None):&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;# Send Email if not msg:</p>
+
+<pre>msg = &amp;quot;Unexpected error: %s\nRanking Script Failed. Please log in and restart manually\n\nEd, this is probably your fault...&amp;quot; % error</pre>
+
+<p>for receiver in toaddrs:</p>
+
+<pre>server = smtplib.SMTP(&amp;#39;smtp.gmail.com:587&amp;#39;)
+server.starttls()
+server.login(username,password)
+server.sendmail(fromaddr, receiver, msg)
+server.quit()&lt;/pre&gt;</pre>
+
+<p>&lt;p&gt;class RankingHandler(FileSystemEventHandler):&lt;/p&gt;</p>
+
+<p>&lt;pre class=“ruby”&gt;&lt;span class=“ruby-keyword”&gt;def&lt;/span&gt;
+&lt;span class=“ruby-identifier”&gt;__init__&lt;/span&gt;(&lt;span
+class=“ruby-keyword”&gt;self&lt;/span&gt;)&lt;span
+class=“ruby-operator”&gt;:&lt;/span&gt;</p>
+
+<pre>&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;modified&lt;/span&gt;     = &lt;span class=&quot;ruby-constant&quot;&gt;False&lt;/span&gt;
+&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;last_checked&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;time&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;time&lt;/span&gt;()
+&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;time_gap&lt;/span&gt;     = &lt;span class=&quot;ruby-constant&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;missed&lt;/span&gt;       = []
+&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;        = &lt;span class=&quot;ruby-constant&quot;&gt;None&lt;/span&gt;</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;def&lt;/span&gt; &lt;span
+class=“ruby-identifier”&gt;on_any_event&lt;/span&gt;(&lt;span
+class=“ruby-keyword”&gt;self&lt;/span&gt;, &lt;span
+class=“ruby-identifier”&gt;event&lt;/span&gt;)&lt;span
+class=“ruby-operator”&gt;:&lt;/span&gt;</p>
+
+<pre>&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;modified&lt;/span&gt; = &lt;span class=&quot;ruby-constant&quot;&gt;True&lt;/span&gt;
+&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;time_gap&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;time&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;time&lt;/span&gt;() &lt;span class=&quot;ruby-operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;last_checked&lt;/span&gt;
+&lt;span class=&quot;ruby-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;time_gap&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;ruby-value&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;ruby-comment&quot;&gt;#900:&lt;/span&gt;
+    &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;last_checked&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;time&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;time&lt;/span&gt;()
+    &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;User Import Initiating at %s&amp;quot;&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;str&lt;/span&gt;(&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;last_checked&lt;/span&gt;))
+    &lt;span class=&quot;ruby-identifier&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;       = &lt;span class=&quot;ruby-identifier&quot;&gt;open&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;./watch/get_users.txt&amp;#39;&lt;/span&gt;, &lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;)
+        &lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;   = &lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;read&lt;/span&gt;()[:&lt;span class=&quot;ruby-value&quot;&gt;-1&lt;/span&gt;].&lt;span class=&quot;ruby-identifier&quot;&gt;split&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;)
+        &lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;close&lt;/span&gt;()
+        &lt;span class=&quot;ruby-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;==&lt;/span&gt; [&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;]&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;ruby-keyword&quot;&gt;return&lt;/span&gt;
+        &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Users: %s&amp;quot;&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;str&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;))
+        &lt;span class=&quot;ruby-identifier&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;      = &lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;[&lt;span class=&quot;ruby-value&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ruby-value&quot;&gt;15&lt;/span&gt;]
+            &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;missed&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;[&lt;span class=&quot;ruby-value&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ruby-identifier&quot;&gt;len&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;)]
+        &lt;span class=&quot;ruby-identifier&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;ruby-constant&quot;&gt;IndexError&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;[&lt;span class=&quot;ruby-value&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;ruby-identifier&quot;&gt;len&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user_list&lt;/span&gt;)]
+        &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;get_profile&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;)
+        &lt;span class=&quot;ruby-identifier&quot;&gt;previous_user&lt;/span&gt; = &lt;span class=&quot;ruby-constant&quot;&gt;None&lt;/span&gt;
+        &lt;span class=&quot;ruby-keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;range&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;len&lt;/span&gt;(&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;))&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;                       = &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;[&lt;span class=&quot;ruby-identifier&quot;&gt;i&lt;/span&gt;]
+            &lt;span class=&quot;ruby-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;] &lt;span class=&quot;ruby-operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;previous_user&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;ruby-identifier&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;screen_name&amp;#39;&lt;/span&gt;])
+                &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;[&lt;span class=&quot;ruby-identifier&quot;&gt;i&lt;/span&gt;][&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;followers&amp;#39;&lt;/span&gt;] = &lt;span class=&quot;ruby-identifier&quot;&gt;get_followers&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;screen_name&amp;#39;&lt;/span&gt;])
+                &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;[&lt;span class=&quot;ruby-identifier&quot;&gt;i&lt;/span&gt;][&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;friends&amp;#39;&lt;/span&gt;]   = &lt;span class=&quot;ruby-identifier&quot;&gt;get_friends&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;screen_name&amp;#39;&lt;/span&gt;])
+                &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;[&lt;span class=&quot;ruby-identifier&quot;&gt;i&lt;/span&gt;][&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;score&amp;#39;&lt;/span&gt;]     = &lt;span class=&quot;ruby-identifier&quot;&gt;calculate_score&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;)
+            &lt;span class=&quot;ruby-identifier&quot;&gt;previous_user&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;]
+        &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Missed %s. Writing back to file&amp;quot;&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;str&lt;/span&gt;(&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;missed&lt;/span&gt;))
+        &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;write_acquired&lt;/span&gt;()
+        &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;write_missed&lt;/span&gt;()
+    &lt;span class=&quot;ruby-identifier&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;ruby-constant&quot;&gt;IOError&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;ruby-identifier&quot;&gt;error_message&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;sys&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;exc_info&lt;/span&gt;()[&lt;span class=&quot;ruby-value&quot;&gt;0&lt;/span&gt;], &lt;span class=&quot;ruby-identifier&quot;&gt;msg&lt;/span&gt;=&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Misaligned I/O... Probably not an issue, but someone should probably check it out...&amp;quot;&lt;/span&gt;)</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;def&lt;/span&gt; &lt;span
+class=“ruby-identifier”&gt;write_missed&lt;/span&gt;(&lt;span
+class=“ruby-keyword”&gt;self&lt;/span&gt;)&lt;span
+class=“ruby-operator”&gt;:&lt;/span&gt;</p>
+
+<pre>&lt;span class=&quot;ruby-identifier&quot;&gt;os&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;remove&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;./watch/get_users.txt&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;ruby-identifier&quot;&gt;get_user_file&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;open&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;./watch/get_users.txt&amp;#39;&lt;/span&gt;, &lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;)
+&lt;span class=&quot;ruby-keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;missed&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;ruby-identifier&quot;&gt;get_user_file&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;write&lt;/span&gt;(&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;)
+&lt;span class=&quot;ruby-identifier&quot;&gt;get_user_file&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;close&lt;/span&gt;()
+&lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;File Cleaned&amp;quot;&lt;/span&gt;)</pre>
+
+<p>&lt;span class=“ruby-keyword”&gt;def&lt;/span&gt; &lt;span
+class=“ruby-identifier”&gt;write_acquired&lt;/span&gt;(&lt;span
+class=“ruby-keyword”&gt;self&lt;/span&gt;)&lt;span
+class=“ruby-operator”&gt;:&lt;/span&gt;</p>
+
+<pre>&lt;span class=&quot;ruby-identifier&quot;&gt;connection&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;sqlite3&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;connect&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;./db/development.sqlite3&amp;#39;&lt;/span&gt;)
+&lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;     = &lt;span class=&quot;ruby-identifier&quot;&gt;connection&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;()
+&lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Connected to Database&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;ruby-keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;      Updating %i&amp;quot;&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;])
+    &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;execute&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;UPDATE users SET userid=?,
+                                       created=?,
+                                       score=?,
+                                       favourite_count=?,
+                                       follower_count=?,
+                                       friend_count=?,
+                                       statuses_count=?,
+                                       userimage=?
+                        WHERE username=? COLLATE NOCASE&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;,
+                                               (&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;created_at&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;score&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;favourites_count&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;followers_count&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;friends_count&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;statuses_count&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;profile_image_url&amp;#39;&lt;/span&gt;],
+                                                &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;screen_name&amp;#39;&lt;/span&gt;]))
+    &lt;span class=&quot;ruby-identifier&quot;&gt;connection&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;commit&lt;/span&gt;()
+&lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Users Updated&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;ruby-keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;users&lt;/span&gt; = []
+&lt;span class=&quot;ruby-identifier&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;ruby-identifier&quot;&gt;followers&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;followers&amp;#39;&lt;/span&gt;][&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;ids&amp;#39;&lt;/span&gt;]
+    &lt;span class=&quot;ruby-keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;follower&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;followers&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;  Adding %i -&amp;gt; %i&amp;quot;&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;%&lt;/span&gt; (&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;], &lt;span class=&quot;ruby-identifier&quot;&gt;follower&lt;/span&gt;))
+        &lt;span class=&quot;ruby-identifier&quot;&gt;exists&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;execute&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;SELECT *
+                                    FROM followers
+                                    WHERE user=? AND follows=?&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;,
+                                    (&lt;span class=&quot;ruby-identifier&quot;&gt;follower&lt;/span&gt;, &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;])).&lt;span class=&quot;ruby-identifier&quot;&gt;fetchall&lt;/span&gt;()
+        &lt;span class=&quot;ruby-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;execute&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;INSERT INTO followers (follows, user)
+                                    VALUES (?, ?)&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, (&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;],
+                                                    &lt;span class=&quot;ruby-identifier&quot;&gt;follower&lt;/span&gt;))
+    &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Followers Updated&amp;quot;&lt;/span&gt;)
+    &lt;span class=&quot;ruby-identifier&quot;&gt;connection&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;commit&lt;/span&gt;()
+&lt;span class=&quot;ruby-identifier&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;debug&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;FOLLOWER OVERLOAD&amp;quot;&lt;/span&gt;)
+&lt;span class=&quot;ruby-identifier&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;ruby-identifier&quot;&gt;friends&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;friends&amp;#39;&lt;/span&gt;][&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;users&amp;#39;&lt;/span&gt;]
+    &lt;span class=&quot;ruby-keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;frienduser&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;friends&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;ruby-identifier&quot;&gt;friend&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;frienduser&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;]
+        &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;  Adding %i -&amp;gt; %i&amp;quot;&lt;/span&gt; &lt;span class=&quot;ruby-operator&quot;&gt;%&lt;/span&gt; (&lt;span class=&quot;ruby-identifier&quot;&gt;friend&lt;/span&gt;, &lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;]))
+        &lt;span class=&quot;ruby-identifier&quot;&gt;exists&lt;/span&gt; = &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;execute&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;SELECT * FROM followers
+                                    WHERE user=? AND follows=?&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;,
+                                    (&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;], &lt;span class=&quot;ruby-identifier&quot;&gt;friend&lt;/span&gt;)).&lt;span class=&quot;ruby-identifier&quot;&gt;fetchall&lt;/span&gt;()
+        &lt;span class=&quot;ruby-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ruby-keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ruby-identifier&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;ruby-identifier&quot;&gt;cursor&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;execute&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;INSERT INTO followers (user, follows)
+                                    VALUES (?, ?)&amp;#39;&lt;/span&gt;&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, (&lt;span class=&quot;ruby-identifier&quot;&gt;user&lt;/span&gt;[&lt;span class=&quot;ruby-string&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;],
+                                                       &lt;span class=&quot;ruby-identifier&quot;&gt;friend&lt;/span&gt;))
+    &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;info&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;Followers Updated&amp;quot;&lt;/span&gt;)
+    &lt;span class=&quot;ruby-identifier&quot;&gt;connection&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;commit&lt;/span&gt;()
+&lt;span class=&quot;ruby-identifier&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;ruby-operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;ruby-identifier&quot;&gt;logging&lt;/span&gt;.&lt;span class=&quot;ruby-identifier&quot;&gt;debug&lt;/span&gt;(&lt;span class=&quot;ruby-string&quot;&gt;&amp;quot;FRIEND OVERLOAD&amp;quot;&lt;/span&gt;)</pre>
+
+<p>&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;if __name__ == “__main__”:&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;sys.exit(main())&lt;/pre&gt;</p>
+
+<p>&lt;/div&gt;</p>
+
+<p>&lt;footer id=“validator-badges”&gt;</p>
+
+<pre>&lt;p&gt;&lt;a href=&quot;http://validator.w3.org/check/referer&quot;&gt;[Validate]&lt;/a&gt;
+&lt;p&gt;Generated by &lt;a href=&quot;https://github.com/rdoc/rdoc&quot;&gt;RDoc&lt;/a&gt; 4.0.1.
+&lt;p&gt;Generated with the &lt;a href=&quot;http://deveiate.org/projects/Darkfish-Rdoc/&quot;&gt;Darkfish Rdoc Generator&lt;/a&gt; 3.</pre>
+
+<p>&lt;/footer&gt;</p>
+</dd></dl>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
