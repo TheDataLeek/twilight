@@ -15,6 +15,7 @@
     <%= link_to "About", root_url, :class=>"button" %>
     <%= link_to "Rankings", "/rankings", :class=>"button" %>
     <%= link_to "Update Info", "/users/#{@user.id}/edit", :class=>"button" %>
+    <%= link_to "Delete Account", "/users/#{@user.id}/destroy", :class=>"buttonsure" %>
     <%= link_to "Logout", "/logout", :class=>"button" %>
 </div>
 

@@ -36,6 +36,24 @@ h1 {
     border-top: 1px solid;
     border-bottom: 1px solid;
 }
+.button:hover {
+    background-color:#a7d3ff;
+}
+
+.buttonsure {
+    text-decoration:none;
+    background: #9f37d0;
+    font: bold 18px Arial;
+    color: #000;
+    padding: 2px 6px 2px 6px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+.buttonsure:hover {
+    background-color:red;
+}
 
 .twocolumn {
     width: 100%;
