@@ -3,9 +3,11 @@
 <div class="width">
     <% if flash[:error] -%>
           <p class='error'><%=h flash[:error] %></p>
+          <% flash[:error] = false %>
       <% end -%>
       <% if flash[:notice] -%>
           <p class='notice'><%=h flash[:notice] %></p>
+          <% flash[:notice] = false %>
     <% end -%>
 </div>
 
@@ -16,12 +18,40 @@
     <%= link_to "Logout", "/logout", :class=>"button" %>
 </div>
 
-<h2>Twitter ID: <%= @user.userid %></h2>
-<h2>Created At: <%= @user.created  %></h2>
-<h2>Score: <%= @user.score %></h2>
-<h2>Follower Count: <%= @user.follower_count %></h2>
-<h2>Friend Count: <%= @user.friend_count %></h2>
-<h2>Favourite Count: <%= @user.favourite_count %></h2>
+<div class="twocolumn">
+    <div class="profileinfo">
+        <table width="100%">
+            <tr>
+                <td><h2>Twitter ID:</h2></td>
+                <td><h2><%= @user.userid %></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Created At:</h2></td>
+                <td><h2><%= @user.created  %></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Score:</h2></td>
+                <td><h2><%= @user.score %></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Follower Count:</h2></td>
+                <td><h2><%= @user.follower_count %></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Friend Count:</h2></td>
+                <td><h2><%= @user.friend_count %></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Favourite Count:</h2></td>
+                <td><h2><%= @user.favourite_count %></h2></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="profileimg">
+        <%= image_tag(@user.userimage, :size=>"200x200") %>
+    </div>
+</div>
 
 <div class="width">
     <%= image_tag("logo.svg", :size=>"400x400", :class=>"logo") %>

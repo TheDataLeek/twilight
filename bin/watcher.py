@@ -133,7 +133,8 @@ class RankingHandler(FileSystemEventHandler):
                                                favourite_count=?,
                                                follower_count=?,
                                                friend_count=?,
-                                               statuses_count=?
+                                               statuses_count=?,
+                                               userimage=?
                                 WHERE username=? COLLATE NOCASE''',
                                                        (user['id'],
                                                         user['created_at'],
@@ -142,6 +143,7 @@ class RankingHandler(FileSystemEventHandler):
                                                         user['followers_count'],
                                                         user['friends_count'],
                                                         user['statuses_count'],
+                                                        user['profile_image_url'],
                                                         user['screen_name']))
             connection.commit()
         logging.info("Users Updated")

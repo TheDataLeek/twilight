@@ -11,3 +11,37 @@
  *= require_self
  *= require_tree .
  */
+body {
+    background: #a7d3ff;
+}
+
+h1 {
+    text-align: center;
+}
+
+.bar {
+    background: #1f37d0;
+    text-align: center;
+    height:30px;
+}
+
+.button {
+    text-decoration:none;
+    background: #9f37d0;
+    font: bold 18px Arial;
+    color: #000;
+    padding: 2px 6px 2px 6px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.logo {
+    background: #a7d3ff;
+}
+
+.width {
+    text-align: center;
+}
+

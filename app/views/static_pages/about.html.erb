@@ -1,12 +1,14 @@
 <h1>Twilight</h1>
 
+<% if !self.current_user.nil? %>
+    <h3>Welcome <%= self.current_user.username %></h3>
+<% end %>
 <div class="bar">
     <% if self.current_user.nil? %>
         <%= link_to "About", root_url, class:"button" %>
         <%= link_to "Login", "/login", class:"button" %>
         <%= link_to "Sign Up", "/signup", class:"button" %>
     <% else %>
-        <h3>Welcome <%= self.current_user.username %></h3>
         <%= link_to "About", root_url, class:"button" %>
         <%= link_to "Home", user_path(self.current_user), class:"button" %>
         <%= link_to "Logout", "/logout", class:"button" %>
