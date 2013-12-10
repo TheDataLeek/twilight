@@ -6,6 +6,7 @@ class RankingController < ApplicationController
         @friends = Array.new
 
         @followers << @user
+        @friends << @user
 
         Followers.find_each do |follower|
             entered_user = User.find_by userid: follower.user
