@@ -147,17 +147,39 @@ class RankingHandler(FileSystemEventHandler):
                                                         user['screen_name']))
             connection.commit()
         logging.info("Users Updated")
+        self.users = []
         try:
             followers = user['followers']['ids']
             for follower in followers:
                 logging.info("	Adding %i -> %i" % (user['id'], follower))
-                cursor.execute('''INSERT INTO followers (follows, user)
-                                        VALUES (?, ?)''', (user['id'],
-                                                        follower))
+                exists = cursor.execute('''SELECT *
+                                            FROM followers
+                                            WHERE user=? AND follows=?''',
+                                            (follower, user['id'])).fetchall()
+                if not exists:
+                    cursor.execute('''INSERT INTO followers (follows, user)
+                                            VALUES (?, ?)''', (user['id'],
+                                                            follower))
             logging.info("Followers Updated")
             connection.commit()
         except:
             logging.debug("FOLLOWER OVERLOAD")
+        try:
+            friends = user['friends']['users']
+            for frienduser in friends:
+                friend = frienduser['id']
+                logging.info("	Adding %i -> %i" % (friend, user['id']))
+                exists = cursor.execute('''SELECT * FROM followers
+                                            WHERE user=? AND follows=?''',
+                                            (user['id'], friend)).fetchall()
+                if not exists:
+                    cursor.execute('''INSERT INTO followers (user, follows)
+                                            VALUES (?, ?)''', (user['id'],
+                                                               friend))
+            logging.info("Followers Updated")
+            connection.commit()
+        except:
+            logging.debug("FRIEND OVERLOAD")
 
 if __name__ == "__main__":
     sys.exit(main())
