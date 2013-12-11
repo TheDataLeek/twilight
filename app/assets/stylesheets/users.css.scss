@@ -7,8 +7,26 @@
     width: 50%;
 }
 
+.profileinfo tr:nth-child(odd) {
+    background-color: #B8CDE3;
+}
+
 .profileimg {
-    vertical-align:middle;
     float: right;
     width: 50%;
+    height: 200px;
+    text-align: middle;
+}
+
+
+.profileimg img{
+	 vertical-align: middle;
+	 max-height: 200px;
+}
+
+
+#helper{
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }

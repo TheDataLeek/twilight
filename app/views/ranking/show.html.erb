@@ -1,13 +1,5 @@
 <h1>Rankings</h1>
 
-<div class="bar">
-    <%= link_to "About", root_url, :class=>"button" %>
-    <%= link_to "Home", user_path(self.current_user), class:"button" %>
-    <%= link_to "Logout", "/logout", :class=>"button" %>
-    <%= link_to "Rankings", "/rankings", :class=>"button" %>
-    <%= link_to "Update Info", "/users/#{@user.id}/edit", :class=>"button" %>
-</div>
-
 <div class="twocolumn">
     <div class="rankings1">
         <h2><%= @user.username %>'s followers:</h2>
@@ -35,3 +27,4 @@
         </table>
     </div>
 </div>
+<br /><br />

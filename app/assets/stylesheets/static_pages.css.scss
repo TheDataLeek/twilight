@@ -8,19 +8,7 @@
 .notice {
     background: red;
 }
-
-.rankings {
-    border: 1px solid blue;
-    border-collapse:collapse;
-    th {
-        padding:5px;
-    }
-    td {
-        padding:5px;
-    }
-}
-
 .info {
-    text-align:center;
-    width:50%;
+    width:65%;
+    margin: 0 auto;
 }

@@ -7,8 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="container">
+		<div id="header"><h1>Twilight</h1></div>
+		<div class="bar">
+		    <%= link_to "Home", root_url, :class=>"button" %>
+		    <% if self.current_user.nil? %>
+		    	<%= link_to "Login", "/login", class:"button" %>
+		    	<%= link_to "Sign Up", "/signup", class:"button" %>
+		    <% else %>
+		    	<%= link_to "Rankings", "/rankings", :class=>"button" %>
+		    	<%= link_to "Profile", "/users/#{self.current_user.id}", :class=>"button" %>
+		    	<%= link_to "Update Info", "/users/#{self.current_user.id}/edit", :class=>"button" %>
+		    	<%= link_to "Logout", "/logout", :class=>"button" %>
+		    <% end %>
+		</div>
+		<div id="details">
+			
+			<%= yield %>
 
-<%= yield %>
+		</div>
+	<div class="width">
+    <%= image_tag("logo.svg", :class=>"logo") %>
+	</div>
+	</div>
 
 </body>
 </html>

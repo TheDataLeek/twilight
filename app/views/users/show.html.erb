@@ -1,4 +1,4 @@
-<h1>Welcome <%= @user.username %></h1>
+<h1>Update <%= @user.username %></h1>
 
 <div class="width">
     <% if flash[:error] -%>
@@ -11,14 +11,8 @@
     <% end -%>
 </div>
 
-<div class="bar">
-    <%= link_to "About", root_url, :class=>"button" %>
-    <%= link_to "Rankings", "/rankings", :class=>"button" %>
-    <%= link_to "Update Info", "/users/#{@user.id}/edit", :class=>"button" %>
-    <%= link_to "Logout", "/logout", :class=>"button" %>
-</div>
-
 <div class="twocolumn">
+    <%= image_tag(@user.userimage, :size=>"200x200") %>
     <div class="profileinfo">
         <table width="100%">
             <tr>
@@ -49,10 +43,6 @@
     </div>
 
     <div class="profileimg">
-        <%= image_tag(@user.userimage, :size=>"200x200") %>
+        <span class="helper"></span>
     </div>
-</div>
-
-<div class="width">
-    <%= image_tag("logo.svg", :size=>"400x400", :class=>"logo") %>
 </div>

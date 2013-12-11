@@ -9,27 +9,27 @@
     <% end -%>
 </div>
 
-<div class="span6 offset3">
+<div class="span6 offset3 forms">
     <%= form_for(@user) do |f| %>
 
         <p>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-        (This should be your Twitter screen name)
+        <%= f.label :username %><br>
+        <span class="grey_text"> (This should be your Twitter screen name)</span><br>
+        <%= f.text_field :username %><br>
         </p>
 
         <p>
-        <%= f.label :email %>
+        <%= f.label :email %><br>
         <%= f.text_field :email %>
         </p>
 
         <p>
-        <%= f.label :password %>
+        <%= f.label :password %><br>
         <%= f.password_field :password %>
         </p>
 
         <p>
-        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.label :password_confirmation, "Confirm Password" %><br>
         <%= f.password_field :password_confirmation %>
         </p>
 

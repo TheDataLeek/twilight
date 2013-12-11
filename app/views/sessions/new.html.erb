@@ -9,14 +9,14 @@
     <% end -%>
 </div>
 
-<div class="form">
+<div class="forms">
     <%= form_for(:session, url: sessions_path) do |f| %>
         <p>
-        <%= f.label :email %>
+        <%= f.label :email %><br>
         <%= f.text_field  :email %>
         </p>
         <p>
-        <%= f.label :password %>
+        <%= f.label :password %><br>
         <%= f.password_field :password %>
         </p>
         <p>
