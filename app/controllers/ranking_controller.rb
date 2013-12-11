@@ -9,8 +9,7 @@ class RankingController < ApplicationController
         @friends << @user
 
         # Followers
-        Followers.find(:all, :conditions => { :follows => @user.userid }) do |follower|
-            p follower
+        Followers.where(follows: @user.userid).each do |follower|
             entered_user = User.find_by(userid: follower.user)
             if entered_user.nil?
                 follow_user = User.new(:username=>follower.user, :score=>0)
@@ -21,7 +20,7 @@ class RankingController < ApplicationController
         end
 
         # Friends
-        Followers.find(:all, :conditions => { :user => @user.userid }) do |follower|
+        Followers.where(user: @user.userid).each do |follower|
             entered_user = User.find_by userid: follower.follows
             if entered_user.nil?
                 follow_user = User.new(:username=>follower.follows, :score=>0)
