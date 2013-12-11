@@ -2,7 +2,9 @@
 
 <div class="width">
     <% if flash[:error] -%>
-          <p class='error'><%=h flash[:error] %></p>
+        <% flash[:error].each do |e| %>
+          <p class='error'><%= e %></p>
+        <% end -%>
       <% end -%>
       <% if flash[:success] -%>
             <p class='notice'><%=h flash[:notice] %></p>

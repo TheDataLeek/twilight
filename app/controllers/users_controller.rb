@@ -11,8 +11,17 @@ class UsersController < ApplicationController
             redirect_to @user
             File.open('./watch/get_users.txt', 'a') { |file| file.puts('%s' % @user.username) }
         else
-            flash[:error] = "Something's Wrong. Please double check fields."
-            render 'new'
+            flash[:error] = ["Sorry, we couldn't create your account because of the following error(s):"]
+            @user.errors[:username].each do |e|
+                flash[:error] << "Username " + e
+            end
+            @user.errors[:email].each do |e|
+                flash[:error] << "Email " + e
+            end
+            @user.errors[:password].each do |e|
+                flash[:error] << "Password " + e
+            end
+            redirect_to '/signup'
         end
     end
 
