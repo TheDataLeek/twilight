@@ -1,4 +1,4 @@
-<h1>Update <%= @user.username %></h1>
+<h1>Welcome <%= @user.username %></h1>
 
 <div class="width">
     <% if flash[:error] -%>
@@ -15,6 +15,10 @@
     <%= image_tag(@user.userimage, :size=>"200x200") %>
     <div class="profileinfo">
         <table width="100%">
+            <tr>
+                <td><h2>Twitter Name:</h2></td>
+                <td><h2><%= @user.username %></h2></td>
+            </tr>
             <tr>
                 <td><h2>Twitter ID:</h2></td>
                 <td><h2><%= @user.userid %></h2></td>

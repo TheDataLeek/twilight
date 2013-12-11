@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header"><h1>Twilight</h1></div>
+        <div id="header"><h1>Twilight<%= image_tag("logo.svg", :class=>"titlelogo") %></h1></div>
 		<div class="bar">
 		    <%= link_to "Home", root_url, :class=>"button" %>
 		    <% if self.current_user.nil? %>

@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'protected_attributes'
+gem 'passenger'
 gem 'bcrypt-ruby', :require=>'bcrypt'
 
 group :test do

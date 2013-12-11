@@ -39,13 +39,19 @@ h1 {
 #header{
     text-align: center;
     line-height: 1.4em;
-    font-size: 1.4em;
+    font-size: 1.5em;
     background-color: #111;
     color: #fff;
     margin: 0px;
-    padding:40px;
+    padding:10px;
     text-shadow: 0 0 0.4em #00aced, 0 0 0.4em #00aced;
-    letter-spacing:2px;
+    letter-spacing:3px;
+}
+
+.titlelogo {
+    text-align: center;
+    vertical-align:bottom;
+    width: 8%;
 }
 
 .bar {
@@ -96,7 +102,6 @@ h1 {
     text-align: center;
     max-width: 100%;
 }
-
 
 .width img{
     width: 80%;
