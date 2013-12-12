@@ -1,0 +1,5 @@
+RackBaseURI /railsapp
+SetEnv GEM_HOME /usr/local/lib/ruby/gems
+PassengerEnabled On
+PassengerAppRoot /home/myrailsapp/current/
+RewriteEngine off
