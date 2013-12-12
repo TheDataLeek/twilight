@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
     def index
+        if signed_in?
+            redirect_to user_path(self.current_user)
+        else
+            redirect_to root_url
+        end
     end
 
     def create
@@ -21,7 +26,7 @@ class UsersController < ApplicationController
             @user.errors[:password].each do |e|
                 flash[:error] << "Password " + e
             end
-            redirect_to '/signup'
+            redirect_to signup_path
         end
     end
 

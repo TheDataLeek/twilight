@@ -16,8 +16,8 @@
 		    	<%= link_to "Sign Up", signup_path, class:"button" %>
 		    <% else %>
 		    	<%= link_to "Rankings", rankings_path, :class=>"button" %>
-		    	<%= link_to "Profile", "/users/#{self.current_user.id}", :class=>"button" %>
-		    	<%= link_to "Update Info", "/users/#{self.current_user.id}/edit", :class=>"button" %>
+		    	<%= link_to "Profile", user_path(self.current_user), :class=>"button" %>
+		    	<%= link_to "Update Info", user_path(self.current_user) + "/edit", :class=>"button" %>
 		    	<%= link_to "Logout", logout_path, :class=>"button" %>
 		    <% end %>
 		</div>
