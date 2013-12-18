@@ -46,7 +46,7 @@ Deployment
     git add -A
     git commit -m <message>
     git push -u origin master
-    bundle exec cap deploy
+    bundle exec cap production deploy
     ssh will-farmer.com
     cd <webdir>/current
     rake assets:precompile
