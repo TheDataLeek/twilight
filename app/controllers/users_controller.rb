@@ -40,7 +40,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = self.current_user
+        user = User.find(params[:id])
+        if user.nil?
+            @user = self.current_user
+        else
+            @user = user
+        end
     end
 
     def update

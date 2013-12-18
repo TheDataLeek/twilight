@@ -171,7 +171,7 @@
     <% @users.each do |user| %>
         <tr>
             <td><%= user.userid %></td>
-            <td><%= user.username %></td>
+            <td><%= link_to user.username, user%></td>
             <td><%= user.created %></td>
             <td><%= user.follower_count %></td>
             <td><%= user.friend_count %></td>

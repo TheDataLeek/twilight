@@ -1,4 +1,8 @@
-<h1>Welcome <%= @user.username %></h1>
+<% if @user == self.current_user %>
+    <h1>Welcome <%= @user.username %></h1>
+<% else %>
+    <h1><%= @user.username %></h1>
+<% end %>
 
 <div class="width">
     <% if flash[:error] -%>
