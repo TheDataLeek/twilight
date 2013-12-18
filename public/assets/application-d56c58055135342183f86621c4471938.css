@@ -8,12 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+
+
  */
+
 body {
     font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-    background-image: url('/twilight<%= asset_path "blackhash.jpg" %>');
+    background-image: url('/twilight/assets/blackhash.jpg');
 }
 
 h1 {
@@ -168,3 +169,42 @@ textarea {
 .rankings tr:nth-child(even) {
     background-color: #eee;
 }
+.rankings1 {
+  text-align: center;
+  float: left;
+  width: 45%; }
+
+.rankings2 {
+  text-align: center;
+  float: right;
+  width: 45%; }
+.error {
+  background: red; }
+
+.notice {
+  background: red; }
+
+.info {
+  width: 65%;
+  margin: 0 auto; }
+.profileinfo {
+  float: left;
+  width: 50%; }
+
+.profileinfo tr:nth-child(odd) {
+  background-color: #B8CDE3; }
+
+.profileimg {
+  float: right;
+  width: 50%;
+  height: 200px;
+  text-align: middle; }
+
+.profileimg img {
+  vertical-align: middle;
+  max-height: 200px; }
+
+#helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle; }
