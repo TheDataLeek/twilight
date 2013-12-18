@@ -1,0 +1,225 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+body {
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    background-image: url('/twilight<img alt="Blackhash" src="/assets/blackhash.jpg" />');
+}
+
+h1 {
+    text-align: center;
+}
+
+#network {
+    margin-left:13%;
+}
+circle.node {
+    cursor: pointer;
+    stroke: #000;
+    stroke-width: .5px;
+}
+
+line.link {
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: 1.5px;
+}
+
+/*The entire centered box*/
+#container{
+    width: 70%;
+    background-color: #eee;
+    margin: 0 auto;
+    margin-top: 0px;
+    border:1px solid #eee;
+}
+
+/*Unique Page content goes in here*/
+#details{
+    padding: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+#header{
+    text-align: center;
+    line-height: 1.4em;
+    font-size: 1.5em;
+    background-color: #111;
+    color: #fff;
+    margin: 0px;
+    padding:10px;
+    text-shadow: 0 0 0.4em #00aced, 0 0 0.4em #00aced;
+    letter-spacing:3px;
+}
+
+.titlelogo {
+    text-align: center;
+    vertical-align:bottom;
+    width: 8%;
+}
+
+.bar {
+    background: #00678e;
+    text-align: center;
+    padding: 10px;
+}
+
+.button {
+    text-decoration:none;
+    color: #fff;
+    padding: 2px 6px 2px 6px;
+    font-weight: bold;
+}
+.button:hover {
+    color: #001117;
+    cursor: pointer;
+
+}
+
+.buttonsure {
+    text-decoration:none;
+    color: #9f37d0;
+    font: bold 18px Arial;
+    color: #000;
+    padding: 2px 6px 2px 6px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+.buttonsure:hover {
+    background-color:red;
+}
+
+.twocolumn {
+    width: 100%;
+    margin: 0 auto;
+    text-align:center;
+}
+
+.logo {
+    background: #eee;
+}
+
+.width {
+    padding-top: 20px;
+    text-align: center;
+    max-width: 100%;
+}
+
+.width img{
+    width: 80%;
+}
+
+.forms{
+    margin: 0 auto;
+    background-color: #ccc;
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+form{
+    font-weight: bold;
+}
+
+input, textarea { 
+    width:12em; 
+    border-radius:2px; 
+    border: solid 1px #ccc; 
+    padding:0.4em; 
+    background-color: #f5f5f5; 
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.2); 
+}
+textarea { 
+    width:100%;
+    height:10em; 
+}
+
+.grey_text{
+    color:#777;
+}
+
+.rankings
+{
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    width:100%;
+    border-collapse:collapse;
+}
+
+.rankings td
+{
+    font-size:1em;
+    border:1px solid #111;
+    padding:3px 7px 2px 7px;
+}
+
+.rankings th{
+    background: -webkit-gradient(linear, left top, left bottom, from(#00aced), to(#005676));
+    background: -moz-linear-gradient(top, #00aced, #005676);
+    background: -o-linear-gradient(top, #00aced, #005676);
+    background: linear-gradient(top, #00aced, #005676);
+    color: #fff;
+    text-shadow: 0px 0.7px 1px #001117;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #111;
+}
+
+.rankings tr:nth-child(odd) {
+    background-color: #B8CDE3;
+}
+.rankings tr:nth-child(even) {
+    background-color: #eee;
+}
+.rankings1 {
+  text-align: center;
+  float: left;
+  width: 45%; }
+
+.rankings2 {
+  text-align: center;
+  float: right;
+  width: 45%; }
+.error {
+  background: red; }
+
+.notice {
+  background: red; }
+
+.info {
+  width: 65%;
+  margin: 0 auto; }
+.profileinfo {
+  float: left;
+  width: 50%; }
+
+.profileinfo tr:nth-child(odd) {
+  background-color: #B8CDE3; }
+
+.profileimg {
+  float: right;
+  width: 50%;
+  height: 200px;
+  text-align: middle; }
+
+.profileimg img {
+  vertical-align: middle;
+  max-height: 200px; }
+
+#helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle; }
