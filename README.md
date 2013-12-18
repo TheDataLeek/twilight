@@ -40,3 +40,16 @@ Models
 * Network
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References
+
+Deployment
+----------
+    git add -A
+    git commit -m <message>
+    git push -u origin master
+    bundle exec cap deploy
+    ssh will-farmer.com
+    cd <webdir>/current
+    rake assets:precompile
+    cp <old release>/db/production <current>/db/production
+    vim about.html # change json pathing
+    apache2 restart

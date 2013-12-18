@@ -13,8 +13,8 @@ class StaticPagesController < ApplicationController
                       "children"=>Array.new}
         @users.each do |u|
             user =  {"name"=>u.username,
-                     "size"=>2000,
-                     "children"=>Array.new}
+                     "size"=>2000}
+            children = Array.new
             Followers.where(user:u.userid).each do |f|
                 followuser = User.find_by(userid: f.follows)
                 if followuser.nil?
@@ -22,8 +22,11 @@ class StaticPagesController < ApplicationController
                 else
                     name = followuser.username
                 end
-                user["children"] << {"name"=>name,
+                children << {"name"=>name,
                                      "size"=>2000}
+            end
+            if children != []
+                user["children"] = children
             end
             jsonfile['children'] << user
         end

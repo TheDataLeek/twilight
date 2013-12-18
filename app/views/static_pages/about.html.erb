@@ -17,7 +17,7 @@
 
 <%= javascript_tag do %>
     var w = 600,
-        h = 400,
+        h = 500,
         node,
         link,
         root;
@@ -32,6 +32,7 @@
         .attr("width", w)
         .attr("height", h);
 
+    // Change to /twilight/network.json for prod
     d3.json("/network.json", function(json) {
         root = json;
         root.fixed = true;
