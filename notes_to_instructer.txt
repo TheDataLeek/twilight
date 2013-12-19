@@ -9,3 +9,5 @@ The rankings#show controller is untestable, as it relies on internal helpers of 
 For the users controller no method is testable save the user creation methods because of its file I/O.
 
 The static_pages controller is also untestable due to its reliance on file I/O.
+
+Some features had to change from revision to revision as we followed the agile development cycle and not all features were necessary to our customer's needs.
