@@ -18,6 +18,7 @@ group :test do
   gem "rspec"
   gem "rspec-core"
   gem "database_cleaner", '1.0.0.RC1'
+  gem "simplecov"
 end
 
 group :doc do
