@@ -1,3 +1,5 @@
-In our original proposal we wanted to include graphical visualizations of people's networks. In the end it turned out that getting that working would have been a project by itself to get it working for each user, so we did not include them on the site. Instead we just have a single vizualization for the entire site. 
+In our original proposal we wanted to include graphical visualizations of people's networks. In the end it turned out that getting that working would have been a project by itself to get it working for each user, so we did not include them on the site. Instead we just have a single vizualization for the entire site. The vizualization present is very priminitve and does not work as well as it could but we felt it was important to have at least one of them present, while a the same time we did not have enough time to get it working 100%.
 
-We were also unable to deploy our website to heroku because of the seperate python watchdog we needed in order to pull new user data from twitter. Instead we deployed it to a personal website, will-farmer.com/twilight.
+We were also unable to deploy our website to heroku because of the seperate python watchdog we needed in order to pull new user data from twitter. Heroku did not easily support having a python script constantly running alongside rails, so instead we deployed it to a personal website, will-farmer.com/twilight. There are notes in the README.md as to how we deploy our cod e to the site.
+
+
