@@ -5,9 +5,7 @@ Feature: Visualizations
     so that I can see pretty pictures.
 
 Background: users, their twitter information and a ranked database of a users local network are stored in databases
-    Given I am on my user profile
+    Given I am on the home page
 
 Scenario: Display Visualization
-    When I click on my visualization
-    Then I should see my influence as a graph
-
+    Then I should see influence as a graph

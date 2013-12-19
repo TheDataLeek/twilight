@@ -52,9 +52,3 @@ end
 
 Then /I should see a user with a higher ranking on (.*)/ do |sort|
 end
-
-When /I click on my visualization/ do
-end
-
-Then /I should see my influence as a graph/ do
-end
