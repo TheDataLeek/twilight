@@ -8,6 +8,11 @@ in /bin.
 
 The languages used are Ruby on Rails and Python.
 
+Basis
+-----
+Please navigate to www.will-farmer.com/twilight/math in order to understand the
+inspiration and basis for this project.
+
 Models
 ------
 * User

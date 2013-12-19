@@ -19,7 +19,7 @@ When /I press (.*)/ do |button|
 end
 
 Then /I should have a new account/ do
-    page.should have_content("I am tester")
+    page.should have_content("Welcome tester")
 end
 
 And /I should be on my user profile/ do
