@@ -4,7 +4,11 @@ Given /I am a new user to the site/ do
 end
 
 And /I am on the (.*) page/ do |page|
-    visit(page)
+    if(page == 'home')
+	visit('/')
+    else	
+        visit(page)
+    end
 end
 
 And /I have filled in my twitter information/ do
