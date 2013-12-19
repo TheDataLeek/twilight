@@ -5,6 +5,7 @@ Twilight::Application.routes.draw do
   get "static_pages/login"
   get "static_pages/logout"
   get "static_pages/about"
+  get "static_pages/math"
   get "users/index"
   get "users/create"
   get "users/new"
@@ -18,6 +19,7 @@ Twilight::Application.routes.draw do
   match '/login',    to: 'sessions#new',     via: 'get'
   match '/logout',   to: 'sessions#destroy', via: 'get'
   match '/rankings', to: 'ranking#show',     via: 'get'
+  match '/math',     to: 'static_pages#math',via: 'get'
 
   root "static_pages#about"
   # The priority is based upon order of creation: first created -> highest priority.

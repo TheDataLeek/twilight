@@ -52,4 +52,8 @@ Deployment
     rake assets:precompile
     cp <old release>/db/production <current>/db/production
     vim about.html # change json pathing
+    ta 3
+    cd <current>
+    cp <old release>/config/gmail_credentials.txt <current>/config/gmail_credentials.txt
+    ./bin/watcher.py
     apache2 restart

@@ -14,10 +14,12 @@
 		    <% if self.current_user.nil? %>
 		    	<%= link_to "Login", login_path, class:"button" %>
 		    	<%= link_to "Sign Up", signup_path, class:"button" %>
+		    	<%= link_to "Math", math_path, class:"button" %>
 		    <% else %>
 		    	<%= link_to "Rankings", rankings_path, :class=>"button" %>
 		    	<%= link_to "Profile", user_path(self.current_user), :class=>"button" %>
 		    	<%= link_to "Update Info", user_path(self.current_user) + "/edit", :class=>"button" %>
+		    	<%= link_to "Math", math_path, class:"button" %>
 		    	<%= link_to "Logout", logout_path, :class=>"button" %>
 		    <% end %>
 		</div>

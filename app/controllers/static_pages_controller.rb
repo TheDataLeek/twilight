@@ -34,6 +34,8 @@ class StaticPagesController < ApplicationController
         File.open("public/network.json","w") do |f|
             f.write(jsonfile.to_json)
         end
+    end
 
+    def math
     end
 end
