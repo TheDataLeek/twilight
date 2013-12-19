@@ -1,5 +1,4 @@
-README
-======
+= README
 Twilight is a tool to rank twitter users on their influence. This tool is
 intended to run as a Ruby on Rails website that allows users to determine their
 influence ranking based on several different factors. This can be run as a full
@@ -12,13 +11,11 @@ help.
 The project is hosted at www.will-farmer.com with source code available at
 www.github.com/willzfarmer/twilight.
 
-Basis
------
+== Basis
 Please navigate to www.will-farmer.com/twilight/math in order to understand the
 inspiration and basis for this project.
 
-Models
-------
+== Models
 * User
   * id:int:primary key    -- Unique Twitter ID
   * username:string       -- Unique Twitter Name
@@ -50,8 +47,7 @@ Models
   * id:int:primary key   -- User ID
   * user:int:foreign key -- User it References
 
-Deployment
-----------
+== Deployment
     git add -A
     git commit -m <message>
     git push -u origin master

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>README - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./notes_to_instructer_txt.html">notes_to_instructer</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Followers.html">Followers</a>
+  
+    <li><a href="./Friends.html">Friends</a>
+  
+    <li><a href="./Network.html">Network</a>
+  
+    <li><a href="./RankingController.html">RankingController</a>
+  
+    <li><a href="./RankingHelper.html">RankingHelper</a>
+  
+    <li><a href="./Retweets.html">Retweets</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-README"><a href="README_rdoc.html">README</a></h1>
+
+<p>Twilight is a tool to rank twitter users on their influence. This tool is
+intended to run as a Ruby on Rails website that allows users to determine
+their influence ranking based on several different factors. This can be run
+as a full fledged Ruby on Rails website, or just as a exectuable Python
+program located in /bin.</p>
+
+<p>The primary languages used are Ruby on Rails and Python, with heavy
+Javascript help.</p>
+
+<p>The project is hosted at <a
+href="http://www.will-farmer.com">www.will-farmer.com</a> with source code
+available at <a
+href="http://www.github.com/willzfarmer/twilight.">www.github.com/willzfarmer/twilight.</a></p>
+
+<h2 id="label-Basis">Basis</h2>
+
+<p>Please navigate to <a
+href="http://www.will-farmer.com/twilight/math">www.will-farmer.com/twilight/math</a>
+in order to understand the inspiration and basis for this project.</p>
+
+<h2 id="label-Models">Models</h2>
+<ul><li>
+<p><a href="User.html">User</a></p>
+<ul><li>
+<p>id:int:primary key    – Unique Twitter ID</p>
+</li><li>
+<p>username:string       – Unique Twitter Name</p>
+</li><li>
+<p>name:string           – Non-Unique Name</p>
+</li><li>
+<p>created:time          – Profile Creation Date</p>
+</li><li>
+<p>rank:int              – Social <a href="Network.html">Network</a> Rank</p>
+</li><li>
+<p>score:int             – Total Score</p>
+</li><li>
+<p>favourite_count:int   – Favourite Count</p>
+</li><li>
+<p>follower_count:int    – Follower Count</p>
+</li><li>
+<p>friend_count:int      – Friend Count</p>
+</li><li>
+<p>retweet_count:int     – Retweet Count</p>
+</li><li>
+<p>statuses_count:int    – Statuses Count</p>
+</li><li>
+<p>email:string          – Email String</p>
+</li><li>
+<p>password:string       – Password</p>
+</li><li>
+<p>password_hash:string  – PassHash</p>
+</li><li>
+<p>password_salt:string  – PassSalt</p>
+</li><li>
+<p>remember_token:string – Remember Token</p>
+</li></ul>
+</li><li>
+<p><a href="Followers.html">Followers</a></p>
+<ul><li>
+<p>id:int:primary key   – ID</p>
+</li><li>
+<p>user:int:foreign key – <a href="User.html">User</a></p>
+</li><li>
+<p>follows:int          – <a href="User.html">User</a> being Followed</p>
+</li></ul>
+</li><li>
+<p><a href="Friends.html">Friends</a></p>
+<ul><li>
+<p>id:int:primary key   – <a href="User.html">User</a> ID</p>
+</li><li>
+<p>user:int:foreign key – <a href="User.html">User</a> it References</p>
+</li></ul>
+</li><li>
+<p><a href="Retweets.html">Retweets</a></p>
+<ul><li>
+<p>id:int:primary key   – <a href="User.html">User</a> ID</p>
+</li><li>
+<p>user:int:foreign key – <a href="User.html">User</a> it References</p>
+</li></ul>
+</li><li>
+<p><a href="Network.html">Network</a></p>
+<ul><li>
+<p>id:int:primary key   – <a href="User.html">User</a> ID</p>
+</li><li>
+<p>user:int:foreign key – <a href="User.html">User</a> it References</p>
+</li></ul>
+</li></ul>
+
+<h2 id="label-Deployment">Deployment</h2>
+
+<pre>git add -A
+git commit -m &lt;message&gt;
+git push -u origin master
+bundle exec cap production deploy
+ssh will-farmer.com
+cd &lt;webdir&gt;/current
+rake assets:precompile
+cp &lt;old release&gt;/db/production &lt;current&gt;/db/production
+vim about.html # change json pathing
+ta 3
+cd &lt;current&gt;
+cp &lt;old release&gt;/config/gmail_credentials.txt &lt;current&gt;/config/gmail_credentials.txt
+./bin/watcher.py
+cd public
+mkdir javascripts
+cp blackhash* blackhash.jpg
+cp &lt;js&gt;*js javascripts
+vim ./bin/watcher.py # change db
+apache2 restart</pre>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

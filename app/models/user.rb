@@ -1,3 +1,4 @@
+# User Model. Needs some special methods to allow for user interactions
 class User < ActiveRecord::Base
   attr_accessible :email, :username, :password, :password_confirmation, :score
   attr_accessor :password
@@ -10,6 +11,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  # Authenticate user to app
   def authenticate(email, password)
     user = User.find_by(email: email.downcase)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -19,6 +21,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Don't store plaintext passwords in db
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
