@@ -18,7 +18,3 @@ Background: users, their twitter information and a ranked database of a users lo
 Scenario: Display ranking
     When I click on the ranking button
     Then I should see a list of my followers ranked by influence
-
-Scenario: Sort ranking
-    When I click on my ranking
-    Then I should see a user with a higher ranking on top
