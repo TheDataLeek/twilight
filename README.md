@@ -56,4 +56,9 @@ Deployment
     cd <current>
     cp <old release>/config/gmail_credentials.txt <current>/config/gmail_credentials.txt
     ./bin/watcher.py
+    cd public
+    mkdir javascripts
+    cp blackhash* blackhash.jpg
+    cp <js>*js javascripts
+    vim ./bin/watcher.py # change db
     apache2 restart
