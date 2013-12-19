@@ -1,0 +1,3 @@
+In our original proposal we wanted to include graphical visualizations of people's networks. In the end it turned out that getting that working would have been a project by itself to get it working for each user, so we did not include them on the site. Instead we just have a single vizualization for the entire site. 
+
+We were also unable to deploy our website to heroku because of the seperate python watchdog we needed in order to pull new user data from twitter. Instead we deployed it to a personal website, will-farmer.com/twilight.
