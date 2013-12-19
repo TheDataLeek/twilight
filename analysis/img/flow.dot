@@ -1,0 +1,57 @@
+digraph flow {
+    start [label="Program Start"]
+    import1 [label="Establish Database"]
+    import2 [label="Twitter Connection"]
+    import3 [label="Scrape Data"]
+    import4 [label="Load Data"]
+    clean1 [label="Establish New Database"]
+    clean2 [label="Find Important User"]
+    clean3 [label="Grab User's Network"]
+    clean4 [label="Load Filtered Data into Clean Database"]
+    followers [label="Import Followers"]
+    analysis1 [label="Data Acquisition"]
+    analysis2 [label="Matrix Creation"]
+    analysis3 [label="Fill Matrix"]
+    analysis4 [label="Normalize Matrix"]
+    analysis5 [label="Power Method"]
+    end [label="Program End"]
+
+    subgraph cluster_import_data {
+        style=filled;
+        color=lightgrey;
+        node[style=filled, color=white, shape=box];
+        label="Import Data";
+        import1 -> import2 -> import3 -> import4
+    }
+
+    subgraph cluster_clean_data {
+        style=filled;
+        color=lightgrey;
+        node[style=filled, color=white, shape=box];
+        label="Clean Data";
+        clean1 -> clean2 -> clean3 -> clean4
+    }
+
+    subgraph cluster_analysis {
+        node[style=filled, color=white, shape=box];
+        analysis1 -> analysis2 -> analysis3 -> analysis4 -> analysis5
+        label="Analysis";
+        color=blue;
+    }
+
+    start -> import1
+
+    import4 -> clean1
+
+    start -> clean1
+
+    clean4 -> followers
+
+    start -> followers
+
+    clean1 -> followers
+
+    followers -> analysis1
+
+    analysis5 -> end
+}

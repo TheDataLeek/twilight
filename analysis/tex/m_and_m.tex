@@ -1,0 +1,179 @@
+Because there was a large amount of data that needed to be analyzed, there were numerous tools that were necessary for an effective study. The tools used include Twitter's development API as well as programming methods for analysis of the data. The first step to figuring out the ranking was to obtain the data from twitter that needed to be analyzed. Twitter's development API allowed us to take the necessary data in order to rank the users, which included the tweets of different users as well as many crucial details about the user's account. For the ranking method used, the only tweets that were needed were the, relatively rare, retweets to allow for a more accurate ranking. The idea behind it was that it took out any data that could be considered an outlier, as well as limit our search to users that were actually important enough to be retweeted.
+
+Once the data from Twitter was acquired through the API, the tweets needed to be processed in a way that the ranking method could then be applied. Doing the work by hand would have been nearly impossible due to the amount of data and the complexity of the ranking methods.\footnote{Our final network had 2715 individual users.} In order to analyze the data effectively we needed to use more sophisticated data analytical tools. Python, R and SQL were the three main languages used for the analysis, with Python being predominant due to its all-purpose intent as well as its relatively simple syntax and library support. It also handles Twitter nicely using {\ttfamily requests} and {\ttfamily requests\_oauthlib} to manage their OAuth authentication system. R was used primarily because of its support of larger filebacked matrices, but also because it can handle large data sets and has built in tools for visualization. We chose to store the raw data in a SQLite database, which is very easy to use with both Python as well as R, because of it's inherent connectability between the different languages as well as its relatively lightweight framework. With those three tools, the ranking method could then be applied to the Twitter data.
+
+In terms of use, Python was used solely to obtain the data from Twitter's API and create the visualizations. Once the data was stored, a primary ranking algorithm was established to determine edge weights in our network. There were three criteria in our ranking algorithm which were the number of followers, the favorites and the retweets.
+
+    \begin{equation}\label{eq:influence}
+        Influence=x \cdot (followers)+y \cdot (favorites)+z \cdot (retweets)
+    \end{equation}\myequations{User Influence}
+
+We decided that because retweets were so rare, they would carry the most weight for our influence score. Followers and favorites were fairly common on Twitter so they didn't carry as much importance. In this study, for the above equation, $x=1,y=1,z=8$.\footnote{Note, it would be trivial to adjust this influence equation and determine a different ranking based on a different numerical meaning of ``influence''} Once our parameters were obtained, the ranking algorithm we created was applied using R. The application of our ranking algorithm gave us an adjacency matrix\footnote{It is important to note at this time that the edges were established from (most importantly) retweets and follower links. Every retweet was given an edge weight of $ 8 \cdot retweets + nodeweight $, and every follower was given a weight of $ follower * nodeweight $. Follower edges were only added if the user that was being followed existed within the established dataset, and retweet edges, by nature had to exists within the dataset.}, which was then normalized to give us our stochastic matrix. One theorem that was necessary to verify we could proceed was the Perron-Frobenius theorem which states that a real square matrix with positive entries has a unique largest real eigenvalue and that the corresponding eigenvector has strictly positive components. The Perron-Frobenius theorem also required our matrix be irreducible, which allowed us to proceed with finding the ranks. The last step for obtaining our final ranks was to apply the power iteration method, and thusly obtain an approximation of our dominant eigenvector.
+
+    \subsection{Analysis Overview}
+    There were four main steps involved in analysis.\footnote{For a more complete and helpful diagram, please see Appendix~\ref{app:workflow}.}
+
+        \NewList
+        \begin{easylist}[enumerate]
+            & Data Acquisition and Formatting (Python)
+            & Data Cleaning (Python)
+            & Data Entry (R)
+            & Analysis (R)
+        \end{easylist}
+
+    \subsection{Data Acquisition and Formatting}
+    The first step of this process was to import the data from Twitter's streaming API.
+
+        \python{./code/twitterImport.py}{21}{25}{4}
+
+    Twitter provides a handy url for streaming a random subset of all Twitter traffic. In order to avoid overfitting, or selection bias we used this random subset for all data analysis. We limited our search to English posts from Boulder, CO in order to hopefully acquire a densely connected network of related posts.
+
+    The next step is to either create the SQLITE database or open a previously existing one. The tables in the database are created with the following python code, and look like Table~\ref{table:database-tables}.
+
+        \python{./code/twitterImport.py}{29}{44}{8}
+
+        \begin{table}[ht]
+            \centering
+            \begin{tabular}{| l | l | l |}
+                \hline
+                \textbf{users} & \textbf{posts} & \textbf{retweets}\\
+                \hline
+                id (text) & id (text) & id (text)\\
+                \hline
+                name (text) & time (text) & end (text)\\
+                \hline
+                followers (text) & entities (text) & count (int)\\
+                \hline
+                favourites\_count (int) & user (text) & \\
+                \hline
+                followers\_count (int) & & \\
+                \hline
+                friends\_count (int) & & \\
+                \hline
+            \end{tabular}
+            \caption{Database Tables}
+            \label{table:database-tables}
+        \end{table}
+
+    Once our database has been established, we move on to the actual data import process. The code block below shows the steps in the order they are completed. For a more detailed reference, please see the attached source code.
+
+        \python{./code/twitterImport.py}{61}{65}{4}
+
+    After this has been completed we have a full database filled with many unique users and posts.
+
+    \subsection{Data Cleaning}
+    After our initial data has been imported, we need to clean the data. In order for our analysis method to work, we need to acquire an irreducible\footnote{Irreducible in this case meaning that all nodes are connected to each other, and the matrix cannot be split into two or more adjacency matrices} adjacency matrix.\footnote{Where an adjacency matrix is the matrix representation of our network of users connected by retweets}. The first step is to establish a new database entirely using the name of the previous database. The structure of this new database is identical to the old, save it is missing the posts table.
+
+    After the database is established, we scan our old database and do three things:
+
+        \NewList
+        \begin{easylist}[enumerate]
+            & Find the \textit{most important} user. This is determined by who has the most edges (retweets) connecting them to the other users.
+            & Find all users that have an edge between them and the most important user.
+            & Recursively apply step 2 to obtain the complete network.
+        \end{easylist}
+
+    Step 1 is accomplished by aggregating the retweet table into absolute scores counting how many times a user was retweeted. The user with the most retweets is defined as our ``most important user'' and only connected users are added to the clean database.
+
+        \python{./code/pyRank.py}{108}{121}{4}
+
+    All users connected to our important user are then added to the new database by looping through user addition until the network no longer changes size from one iteration to the next.
+
+        \python{./code/pyRank.py}{123}{143}{4}
+
+    This then gives us a list of all users connected to the most important user, as well as the most important user itself. We then iterate through the old database and copy all relevant information from the old database to the new one if and only if the user exists in our list of connected/important users. At this point the data has been cleaned and all further analysis will be performed on the clean database.
+
+    \subsection{Data Entry}
+    Now that we have a reliable data source, we can analyze the data. This is accomplished using the R language. R is very good at handling large quantities of data, and as a result is ideal for this situation. The R code for the analysis is contained in {\ttfamily ./code/ranking.R}, and can be run separately from the python program, however this is not recommended.
+
+    The first step to importing the data from our previously established clean SQLITE database is to create the user dataframe.\footnote{In R, a dataframe is a special datatype that is useful for many applications. For more information, I would recommend \url{http://stat.ethz.ch/R-manual/R-devel/library/base/html/data.frame.html}} As part of this operation, we need to establish a list of users by querying the user table from our clean database.
+
+    \rlang{./code/ranking.R}{16}{24}{0}
+
+    Once we have our list of users, we can then construct the dataframe by finding the weight of the user from individual database queries.
+
+    \rlang{./code/ranking.R}{26}{48}{0}
+
+    This dataframe construction gives us the following dataframe. Please see Appendix~\ref{app:userweights}  to see a more complete dataframe.
+
+        \begin{equation}\label{eq:userdataframe}
+            \begin{pmatrix}
+              390267816 & 2349.00 \\ 
+              1167483505 & 33.00 \\ 
+              853887943 & 34.00 \\ 
+              325869713 & 1798.00 \\ 
+              898986895 & 902.00 \\ 
+              1328457397 & 1616.00 \\ 
+              1355302483 & 721.00 \\ 
+              1266058160 & 3682.00 \\ 
+              515334031 & 366.00 \\ 
+              230436012 & 1082.00 \\ 
+              371462259 & 1946.00 \\ 
+              298627315 & 2740.00 \\ 
+              449047486 & 5743.00 \\ 
+              630746058 & 11330.00 \\ 
+              1143867078 & 4359.00 \\ 
+              461854939 & 87.00 \\ 
+              707394641 & 653.00 \\ 
+              204178374 & 328.00 \\ 
+              454467056 & 648.00 \\ 
+              1740729596 & 1406.00 \\ 
+              555636619 & 1183.00 \\ 
+              783648271 & 2189.00 \\ 
+              582951657 & 7693.00 \\ 
+              216346618 & 659.00 \\ 
+              1656121652 & 1304.00 \\ 
+              714914388 & 4165.00 \\ 
+              1370674644 & 2044.00 \\ 
+              341134422 & 1336.00 \\ 
+              580051343 & 6002.00 \\ 
+              1451680514 & 3076.00 \\ 
+            \end{pmatrix}
+        \end{equation}\myequations{Abbreviated User-Weight Dataframe}
+
+    Now that we have our user weights dataframe, we can determine the links between users, and construct yet another dataframe consisting of all follower links between our users.
+
+    \rlang{./code/ranking.R}{50}{61}{0}
+
+    We finally have all the information we need in the correct formats in order to create our matrix. Four separate functions are referenced in order to optimize our code for speed. These functions are described below.
+
+    \rlang{./code/ranking.R}{71}{98}{0}
+
+        \subsubsection{Create Matrix}
+        \rlang{./code/ranking.R}{63}{69}{0}
+
+        This generates an $n \times n$ filebacked matrix to be populated later.
+
+        \subsubsection{Replace}
+        \rlang{./code/ranking.R}{122}{135}{0}
+
+        Replace takes each row in our SQL query and adds a link from retweets in our adjacency matrix in the correct position.
+
+        \subsubsection{Followers}
+        \rlang{./code/ranking.R}{100}{120}{0}
+
+        Followers takes each row in our SQL query and adds a link from followers in our adjacency matrix in the correct position.
+
+        \subsubsection{Normalize}
+        \rlang{./code/ranking.R}{137}{145}{0}
+
+        Normalize replaces each row with the row divided by its sum. This gives us a probability matrix.
+
+    \subsection{Analysis}
+    In order to determine the rankings of the users, we first construct an arbitrary vector with length equal to the number of users with unit length 1. Our non-orthonormalized matrix is of the form
+
+        \begin{equation}\label{matrix:startingA}
+            \begin{pmatrix}
+                1\\
+                1\\
+                1\\
+                \vdots\\
+                1
+            \end{pmatrix}
+        \end{equation}\myequations{Initial Arbitrary Vector}
+
+    We then pass the vector and matrix to our power method which runs however many iterations are specified. Please see the beginning of this section for more explanation on how the algorithm works.
+
+    \rlang{./code/ranking.R}{151}{159}{0}
+
+    These two steps will run as many times as specified, and when complete (or nearly so) they will give us an approximation to our eigenvector. This eigenvector has a direct one-to-one correspondence to our user's relative rank compared to this network.

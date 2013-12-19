@@ -1,0 +1,73 @@
+\documentclass[10pt]{report}
+
+\input{./tex/header.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of document items - headers, title, toc, etc...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+\tableofcontents    % Table of contents
+\newpage
+
+\listoffigures      % List of Figures
+\newcommand{\listequationsname}{\Large{List of Equations}}          % Funky code to include LOE
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\listofmyequations
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+    \input{./tex/abstract.tex}
+\end{abstract}
+
+\section{Introduction}
+\input{./tex/intro.tex}
+
+\section{Materials and Methods}
+    \input{./tex/m_and_m.tex}
+
+\subsection{Analysis}
+    \input{./tex/analysis.tex}
+
+\section{Conclusion}
+
+    \subsection{Implications}
+        \input{./tex/implications.tex}
+
+    \subsection{Discussion}
+        \input{./tex/discussion.tex}
+
+\newpage
+
+\appendix
+
+\section{Workflow}\label{app:workflow}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.3]{./img/flow.png}
+        \label{img:flow}
+        \caption{Workflow Diagram}
+    \end{figure}
+
+\section{Eigenvector}\label{app:results}
+Our .csv eigenvector can be found \attachfile{./code/eigenvector.csv}{here}.
+
+\section{User Weight Dataframe}\label{app:userweights}
+Only users with a weight greater than 10,000 have been shown. For a full listing, please download \attachfile{./code/fulldataframe.csv}{User Weights}.
+\input{./code/userweightdataframe.tex}
+
+\section{Attachments}
+\attachfile{./tex/attachments.tar.gz}{Report \LaTeX}
+
+\attachfile{./tex/code.tar.gz}{Report Programs}
+
+\section{Authors}
+If you have any questions about methods used, are unable to access attached files, or wish to discuss the report more with the authers, please email \url{willzfarmer@gmail.com} or visit \url{www.will-farmer.com} where this paper will be posted.
+
+\end{document}
