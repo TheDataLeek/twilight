@@ -14,27 +14,27 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-12-18T22:02:11-07:00">2013-12-18T22:02:11-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-12-18T22:57:37-07:00">2013-12-18T22:57:37-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">75.69%</span></span>
+    (<span class="covered_percent"><span class="red">71.11%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.8
+         0.76
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>23</b> files in total.
-    <b>181</b> relevant lines. 
-    <span class="green"><b>137</b> lines covered</span> and
-    <span class="red"><b>44</b> lines missed </span>
+    <b>22</b> files in total.
+    <b>180</b> relevant lines. 
+    <span class="green"><b>128</b> lines covered</span> and
+    <span class="red"><b>52</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,12 +62,12 @@
       
       <tr>
         <td class="strong"><a href="#25d9f41c8dca3cda57b32ec09d21486fb53e269b" class="src_link" title="app/controllers/ranking_controller.rb">app/controllers/ranking_controller.rb</a></td>
-        <td class="red strong">38.1 %</td>
+        <td class="red strong">9.52 %</td>
         <td>37</td>
         <td>21</td>
-        <td>8</td>
-        <td>13</td>
-        <td>0.4</td>
+        <td>2</td>
+        <td>19</td>
+        <td>0.1</td>
       </tr>
       
       <tr>
@@ -102,11 +102,11 @@
       
       <tr>
         <td class="strong"><a href="#05f74d725e6476be800fc81c5019614ccf9fa460" class="src_link" title="app/helpers/sessions_helper.rb">app/helpers/sessions_helper.rb</a></td>
-        <td class="red strong">62.96 %</td>
+        <td class="red strong">55.56 %</td>
         <td>46</td>
         <td>27</td>
-        <td>17</td>
-        <td>10</td>
+        <td>15</td>
+        <td>12</td>
         <td>0.6</td>
       </tr>
       
@@ -122,16 +122,6 @@
       
       <tr>
         <td class="strong"><a href="#b80642dcc0670c34c048952d712bcd56ab37726c" class="src_link" title="app/helpers/users_helper.rb">app/helpers/users_helper.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>2</td>
-        <td>1</td>
-        <td>1</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#c489d98c884a68b78181d4b8b63916178b2e6b90" class="src_link" title="app/models/followers.rb">app/models/followers.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>2</td>
         <td>1</td>
@@ -353,11 +343,11 @@
         <div class="source_table" id="25d9f41c8dca3cda57b32ec09d21486fb53e269b">
   <div class="header">
     <h3>app/controllers/ranking_controller.rb</h3>
-    <h4><span class="red">38.1 %</span> covered</h4>
+    <h4><span class="red">9.52 %</span> covered</h4>
     <div>
       <b>21</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>13</b> lines missed.</span>
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>19</b> lines missed.</span>
     </div>
   </div>
   
@@ -376,8 +366,8 @@
           <code class="ruby">    def show</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="3">
+          
           
           <code class="ruby">        @user = self.current_user</code>
         </li>
@@ -388,14 +378,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="5">
+          
           
           <code class="ruby">        @followers = Array.new</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="6">
+          
           
           <code class="ruby">        @friends = Array.new</code>
         </li>
@@ -406,14 +396,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
           
           <code class="ruby">        @followers &lt;&lt; @user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
           
           <code class="ruby">        @friends &lt;&lt; @user</code>
         </li>
@@ -430,8 +420,8 @@
           <code class="ruby">        # Followers</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="12">
+          
           
           <code class="ruby">        Followers.where(follows: @user.userid).each do |follower|</code>
         </li>
@@ -1097,11 +1087,11 @@
         <div class="source_table" id="05f74d725e6476be800fc81c5019614ccf9fa460">
   <div class="header">
     <h3>app/helpers/sessions_helper.rb</h3>
-    <h4><span class="red">62.96 %</span> covered</h4>
+    <h4><span class="red">55.56 %</span> covered</h4>
     <div>
       <b>27</b> relevant lines. 
-      <span class="green"><b>17</b> lines covered</span> and
-      <span class="red"><b>10</b> lines missed.</span>
+      <span class="green"><b>15</b> lines covered</span> and
+      <span class="red"><b>12</b> lines missed.</span>
     </div>
   </div>
   
@@ -1210,14 +1200,14 @@
           <code class="ruby">    def current_user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="18">
+          
           
           <code class="ruby">        remember_token  = User.encrypt(cookies[:remember_token])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
           
           <code class="ruby">        @current_user ||= User.find_by(remember_token: remember_token)</code>
         </li>
@@ -1448,36 +1438,6 @@
   </pre>
 </div>
       
-        <div class="source_table" id="c489d98c884a68b78181d4b8b63916178b2e6b90">
-  <div class="header">
-    <h3>app/models/followers.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>1</b> relevant lines. 
-      <span class="green"><b>1</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Followers &lt; ActiveRecord::Base</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="2">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
         <div class="source_table" id="4f311c4fb849b66f74cbc832fb401c5db6a55849">
   <div class="header">
     <h3>app/models/user.rb</h3>
@@ -1690,8 +1650,8 @@
           <code class="ruby">  def User.encrypt(token)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="34">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
           
           <code class="ruby">      Digest::SHA1.hexdigest(token.to_s)</code>
         </li>

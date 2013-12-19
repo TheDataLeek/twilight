@@ -3,3 +3,9 @@ In our original proposal we wanted to include graphical visualizations of people
 We were also unable to deploy our website to Heroku because of the separate python watchdog we needed in order to pull new user data from twitter. Heroku did not easily support having a python script constantly running alongside rails, so instead we deployed it to a personal website, will-farmer.com/twilight. There are notes in the README.md as to how we deploy our code to the site.
 
 Not all functions were tested for the website, in fact many were left untested due to their inherent untestable nature. This "final" product is still very much in beta and could be rewritten to allow for more comprehensive testing, however given the time allotted we felt it prudent to leave testing at the state that we could.
+
+The rankings#show controller is untestable, as it relies on internal helpers of the website, more specifically the self.current user method.
+
+For the users controller no method is testable save the user creation methods because of its file I/O.
+
+The static_pages controller is also untestable due to its reliance on file I/O.
