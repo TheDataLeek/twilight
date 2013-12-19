@@ -5,8 +5,8 @@ end
 
 And /I am on the (.*) page/ do |page|
     if(page == 'home')
-	visit('/')
-    else	
+    visit('/')
+    else
         visit(page)
     end
 end
